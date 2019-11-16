@@ -1,0 +1,117 @@
+{
+    "puzzle": {
+        "size": 5,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 3,
+                    "direction": "A",
+                    "description": "_ wrestling",
+                    "number": 1,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "Kids can makes money by losing them",
+                    "number": 4,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "_ game",
+                    "number": 7,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 1,
+                    "length": 4,
+                    "direction": "A",
+                    "description": "video _",
+                    "number": 8,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 4,
+                    "column": 1,
+                    "length": 4,
+                    "direction": "A",
+                    "description": "Org on Brooklyn Nine-Nine",
+                    "number": 9,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 3,
+                    "direction": "D",
+                    "description": "Four-wheel off-roader",
+                    "number": 1,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 1,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "Period in power",
+                    "number": 2,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "Time for some self-pampering",
+                    "number": 3,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 3,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "Something measured in F or F, for short",
+                    "number": 5,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 4,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "Worked the soil",
+                    "number": 6,
+                    "num_filled": 0
+                }
+            }
+        ]
+    }
+}

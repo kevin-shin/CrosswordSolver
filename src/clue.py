@@ -1,4 +1,4 @@
-across = "across"
+import json
 
 class Clue:
     def __init__(self,row,column,length,direction,description,number):
@@ -18,5 +18,3 @@ class Clue:
 
     def __str__(self):
         return "Clue: {}".format(self.description)
-    
-        
