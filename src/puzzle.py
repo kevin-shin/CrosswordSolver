@@ -10,6 +10,7 @@ class Puzzle():
         self.clue_neighbors = clue_neighbors
 
     def build_adj_list(self):
+        #TODO: Fix this
         for clue in self.clues:
             self.clues_map[clue.get_position()] = clue 
 
