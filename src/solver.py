@@ -8,9 +8,5 @@ class Solver():
         self.puzzle = puzzle.parsed()
 
 if __name__ == "__main__":
-    
-    with open("example_puzzle.json","r") as f:
-        lines = f.read()
-    d = PuzzleDecoder()
-    example_puzzle = d.decode(lines)
-    print(type(example_puzzle),example_puzzle, example_puzzle.clues[0])
+    p = Puzzle.from_file("example_puzzle.json")
+    print(p)

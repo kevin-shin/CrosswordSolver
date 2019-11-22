@@ -2,9 +2,10 @@ from clue import Clue
 import json
 
 class Puzzle():
-    def __init__(self, size:int, clues:list, clue_neighbors:dict):
+    def __init__(self, size:int, clues:list):
         self.size = size
         self.clues = clues
+        #TODO: implement clues map
         self.clues_map = {}
         self.build_adj_list()
         self.clue_neighbors = clue_neighbors
@@ -19,6 +20,14 @@ class Puzzle():
         for clue in self.clues_map.keys():
             arr.append((clue, self.clues_map[clue].get_description()))
         return str(arr)
+
+    @staticmethod
+    def from_file(filename):
+        pd = PuzzleDecoder()
+        with open(filename,"r") as f:
+            lines = f.read()
+            return pd.decode(lines)
+
 
 class PuzzleEncoder(json.JSONEncoder):
      def default(self, object):
@@ -38,5 +47,5 @@ class PuzzleDecoder(json.JSONDecoder):
             dct['clue']['length'],dct['clue']['direction'],dct['clue']['description'],
             dct['clue']['number'])
         elif "puzzle" in dct:
-            return Puzzle(dct["puzzle"]["size"],dct["puzzle"]["clues"],{})
+            return Puzzle(dct["puzzle"]["size"],dct["puzzle"]["clues"])
         return dct
