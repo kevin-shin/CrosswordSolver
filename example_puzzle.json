@@ -8,7 +8,7 @@
                     "column": 0,
                     "length": 3,
                     "direction": "A",
-                    "description": "_ wrestling",
+                    "description": " _ wrestling",
                     "number": 1,
                     "num_filled": 0
                 }
@@ -30,7 +30,7 @@
                     "column": 0,
                     "length": 5,
                     "direction": "A",
-                    "description": "_ game",
+                    "description": " _ game",
                     "number": 7,
                     "num_filled": 0
                 }
@@ -41,7 +41,7 @@
                     "column": 1,
                     "length": 4,
                     "direction": "A",
-                    "description": "video _",
+                    "description": "video _ ",
                     "number": 8,
                     "num_filled": 0
                 }
