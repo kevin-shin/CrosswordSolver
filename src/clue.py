@@ -1,7 +1,7 @@
 import json
 
 class Clue:
-    def __init__(self,row,column,length,direction,description,number):
+    def __init__(self,row:int,column:int,length:int,direction:str,description:str,number:int):
         self.row = row
         self.column = column
         self.length = length
