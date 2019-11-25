@@ -2,13 +2,11 @@ from clue import Clue
 import json
 
 class Puzzle():
-    def __init__(self, size:int, clues:list):
+    def __init__(self, size, clues):
         self.size = size
         self.clues = clues
-        #TODO: implement clues map
         self.clues_map = {}
         self.build_adj_list()
-        self.clue_neighbors = clue_neighbors
 
     def build_adj_list(self):
         #TODO: Fix this
@@ -19,7 +17,7 @@ class Puzzle():
         arr = []
         for clue in self.clues_map.keys():
             arr.append((clue, self.clues_map[clue].get_description()))
-        return str(arr)
+        return str(self.clues)
 
     @staticmethod
     def from_file(filename):

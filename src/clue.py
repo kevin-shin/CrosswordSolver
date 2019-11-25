@@ -8,13 +8,18 @@ class Clue:
         self.direction = direction
         self.description = description
         self.number = number
-        self.num_filled = 0
 
     def get_position(self):
         return (self.row, self.column)
 
     def get_description(self):
         return self.description
+    
+    def get_direction(self):
+        return self.direction
+    
+    def get_length(self):
+        return self.length
 
     def __str__(self):
         return "Clue: {}".format(self.description)
