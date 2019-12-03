@@ -3,9 +3,9 @@ from clue import Clue
 from guess import Guess
 
 DATAMUSE_URL = "https://api.datamuse.com/words"
-verbose = False
+verbose = True
 
-def get_answers(clue:Clue, words_only=True):
+def get_answers(clue:Clue, limit = 10, words_only=True):
     """Takes in a Clue object and returns a list of words (optionally associated with scores) which
         are potential answers to the given clue."""
     params = {}
@@ -21,12 +21,9 @@ def get_answers(clue:Clue, words_only=True):
     
     params["sp"] = "?" * clue.length
 
-    if verbose: 
-        print(params)
-        print("HERE IS DATAMUSE'S API")
-        print(clean_results(clue, request(params),words_only=words_only))
+    results = clean_results(clue, request(params),words_only=words_only)[:limit]
 
-    return clean_results(clue, request(params),words_only=words_only)
+    return results
 
 def request(params:dict):
     r = requests.get(DATAMUSE_URL,params)

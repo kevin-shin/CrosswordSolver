@@ -26,10 +26,6 @@ class Puzzle():
     @staticmethod
     def from_file(filename):
         pd = PuzzleDecoder()
-        print("DIRECTORY")
-        print(os.listdir())
-        print("CURRENT DIR")
-        print(os.getcwd())
         with open(filename,"r") as f:
             lines = f.read()
             return pd.decode(lines)

@@ -22,4 +22,4 @@ class Clue:
         return self.length
 
     def __str__(self):
-        return "Clue: {}".format(self.description)
+        return "Clue ({}) at position {}: {}".format(self.direction, (self.row, self.column), self.description)

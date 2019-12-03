@@ -15,7 +15,10 @@ class Guess():
         return self.clue.get_position()
     
     def get_string(self):
-        return self.get_string()
+        return self.string
     
     def get_clue(self):
         return self.clue
+
+    def __str__(self):
+        return "GUESS// " + "CLUE: " + str(self. clue) + " GUESS: " + str(self.string)
