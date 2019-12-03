@@ -1,5 +1,8 @@
-from clue import Clue
 import json
+import os 
+
+from clue import Clue
+
 
 class Puzzle():
     def __init__(self, size, clues):
@@ -17,11 +20,16 @@ class Puzzle():
         arr = []
         for clue in self.clues_map.keys():
             arr.append((clue, self.clues_map[clue].get_description()))
+        # return str(arr)
         return str(self.clues)
 
     @staticmethod
     def from_file(filename):
         pd = PuzzleDecoder()
+        print("DIRECTORY")
+        print(os.listdir())
+        print("CURRENT DIR")
+        print(os.getcwd())
         with open(filename,"r") as f:
             lines = f.read()
             return pd.decode(lines)

@@ -1,22 +1,21 @@
+from clue import Clue
+
 class Guess():
-    def __init__(self, clue: Clue, string: String):
-        self.clue = clue #may not be needed
+    def __init__(self, clue: Clue, string: str):
+        self.clue = clue
         self.string = string
-        self.length = clue.get_length()
-        self.direction = clue.get_direction()
-        self.position = clue.get_position()
     
     def get_direction(self):
-        return self.direction
+        return self.clue.get_direction()
     
     def get_length(self):
-        return self.length
+        return self.clue.get_length()
     
     def get_position(self):
-        return self.position
+        return self.clue.get_position()
     
     def get_string(self):
-        return self.string
+        return self.get_string()
     
     def get_clue(self):
         return self.clue
