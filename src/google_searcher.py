@@ -5,10 +5,9 @@ import stanfordnlp
 from clue import Clue
 import re
 
-def google_answers(clue:str):
+def search_google(clue:str):
     
     url = "https://google.com/search"
-    print(url)
     page = requests.get(url,params={"q":clue},headers={"user-agent":"Mozilla/5.0"})
     soup = BeautifulSoup(page.content,features='html5lib') 
 
@@ -22,21 +21,26 @@ def google_answers(clue:str):
 
     for s in soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True):
         if "·" not in s.text:
-            outtext.append(s.text.replace(u'\xa0', u' ')
-            .replace(", ...",".")
-            .replace(" ...",".")
-            .replace("...","."))
+            outtext.append(clean_result(s.text))
     return outtext
 
+def clean_result(result:str):
+    result = result.lower()
+    result.replace(u'\xa0', u' ').replace(", ...",".").replace(" ...",".").replace("..."," ")
+    result = ''.join(c for c in result if c.isalpha() or c == " ")
+
+    return result
+
+
 def get_blank_answers(clue:Clue,limit=10,words_only=True):
-    q = clue.description.lower()
-    results = " ".join(i for i in google_answers(clue.description))
-    q = q.replace("*",".{{{}}}".format(clue.length))
-    print(q)
-    r = re.compile(q.replace("*",".{clue.length}"))
+    q = clue.get_description().lower()
+    results = " ".join(i for i in search_google(q))
+    q = q.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
+
+    r = re.compile(q)
+    print("R",r,"Q",q)
 
     matches = re.findall(r,results)
-    print("MATCHES",matches)
 
     ret = [word for match in matches for word in match.split(" ") if word.lower() not in q.split(" ")]
 
@@ -44,18 +48,20 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
 
 def get_quote_answers(clue:Clue,limit=10,words_only=True):
     #TODO google quote, use nlp to get answer
-    
+
     return ["random","words"]
 
 if __name__ == "__main__":
-    # c = Clue(0,0,5,"A","What a * of work is man",1)
-    # c = Clue(0,0,6,"A",'"Oh, what a * it is!"',1)
-    # print(solve_blank(c))
-    # print(google_answers('"Oh what a * it is"'))
+    c = Clue(0,0,5,"A","What a * of work is man",1)
+    c = Clue(0,0,6,"A",'"oh what a * it is"',1)
+    c = Clue(0,0,4,"A",'"from * to nuts"',1)
+    print(get_blank_answers(c))
+    #print(search_google('"Oh, What a * It Is!"'))
+    
     #stanfordnlp.download("en")
-    nlp = stanfordnlp.Pipeline()
-    doc = nlp("Freudian focus")
-    doc.sentences[0].print_dependencies()
+    # nlp = stanfordnlp.Pipeline()
+    # doc = nlp("Freudian focus")
+    # doc.sentences[0].print_dependencies()
     
     
 
