@@ -1,0 +1,51 @@
+{
+    "puzzle": {
+        "size": 5,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 3,
+                    "direction": "A",
+                    "description": "filch",
+                    "number": 1,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 4,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "gothic architecture feature",
+                    "number": 2,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 1,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "* the hill and through the woods",
+                    "number": 3,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "skewered meat dish",
+                    "number": 4,
+                    "num_filled": 0
+                }
+            }
+        ]
+    }
+}
