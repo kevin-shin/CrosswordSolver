@@ -28,7 +28,7 @@ def google_answers(clue:str):
             .replace("...","."))
     return outtext
 
-def solve_blank(clue:Clue):
+def get_blank_answers(clue:Clue,limit=10,words_only=True):
     q = clue.description.lower()
     results = " ".join(i for i in google_answers(clue.description))
     q = q.replace("*",".{{{}}}".format(clue.length))
@@ -42,15 +42,20 @@ def solve_blank(clue:Clue):
 
     return ret
 
+def get_quote_answers(clue:Clue,limit=10,words_only=True):
+    #TODO google quote, use nlp to get answer
+    
+    return ["random","words"]
+
 if __name__ == "__main__":
-    c = Clue(0,0,5,"A","What a * of work is man",1)
-    c = Clue(0,0,6,"A",'"Oh, what a * it is!"',1)
-    print(solve_blank(c))
-    print(google_answers('"Oh what a * it is"'))
+    # c = Clue(0,0,5,"A","What a * of work is man",1)
+    # c = Clue(0,0,6,"A",'"Oh, what a * it is!"',1)
+    # print(solve_blank(c))
+    # print(google_answers('"Oh what a * it is"'))
     #stanfordnlp.download("en")
-    # nlp = stanfordnlp.Pipeline()
-    # doc = nlp(google_answers('"what a * * * is man"')[0])
-    # doc.sentences[0].print_dependencies()
+    nlp = stanfordnlp.Pipeline()
+    doc = nlp("Freudian focus")
+    doc.sentences[0].print_dependencies()
     
     
 
