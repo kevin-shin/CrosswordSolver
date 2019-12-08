@@ -4,7 +4,7 @@ from datamuse import get_answers
 from printer import print_grid, print_cluelist, print_guess_set
 import random
 import datamuse
-
+import google_searcher 
 
 verbose = True
 
@@ -56,8 +56,9 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_li
         solution_list.append(state_grid)
 
     possible_guesses = generate_guesses(state_grid, clues, visited_clues)
-    print("POSSIBLE GUESSES")
-    print_guess_set(set(possible_guesses))
+    print("$$$$$$$$$$$$$$$$$$$$")
+    for guess in possible_guesses:
+        print("        " + str(guess))
 
     for guess in possible_guesses:
         if check_fit(state_grid, guess) == "fit":
@@ -88,41 +89,6 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_li
 
 #what if instead of a "do this" approach based on clue fitting, we did it based off of ranking which clues are the easiest to solve?
 
-# def BFS(state_grid, clues):
-#     state_queue = []
-#     solution_list = []
-#     visited_clues = {}
-#     visited_states = {}
-
-#     if verbose:
-#         print()
-#         print("------->     STARTING BFS  ")
-#         print("Current Clues: ")
-#         print_cluelist(clues)
-#         print("Current Visited Clues: " )
-#         print_cluelist(list(visited_clues))
-#     # Revisit this. BFS needs a start trigger but maybe shouldn't be random?
-#     first_clue = random.choice(clues)
-#     state_queue.append(first_clue)
-#     visited_clues.add(first_clue)
-
-#     while state_queue:
-#         clue = state_queue.pop()
-#         possible_guesses = generate_guesses(state_grid, clues, visited_clues)
-#         for guess in possible_guesses:
-#             if check_fit(state_grid, guess) == "fit":
-#                 new_child = fit(state_grid, guess)
-#                 print_grid(new_child)
-#                 tuple_v = grid_to_tuple(new_child)
-#                 if (tuple_v not in visited_states):
-#                     visited_clues.add(guess.get_clue())
-#                     visited_states.add(tuple_v)
-#                     state_queue.append()
-#             elif check_fit(state_grid, guess) == "collision":
-#                 new_child = change_rank(state_grid, guess, )
-#     return solution_list
-
-
 ################################################################################################################ 
 #                                         Helper Methods                                                       #
 ################################################################################################################ 
@@ -138,10 +104,10 @@ def generate_guesses(state_grid, clues, visited_clues):
 
     for clue in not_used_list:
         #eventually need to be a little smarter about this, which is why state_grid is there but not used. 
-        # answer_func = partition_clue(clue)
-        # clue_guesses = answer_func(clue, 1)
-        clue_guesses = get_answers(clue, 1)
+        answer_func = partition_clue(clue)
+        clue_guesses = answer_func(clue, 3)
         guesses.extend(clue_guesses)
+
     return guesses
 
 def check_fit(grid, guess):
@@ -179,6 +145,11 @@ def find_best_guess_set(guess_set, current_guess):
     
     else:
         guess, current_guess = collide_guess[0][0], collide_guess[0][1]
+        print("---------------")
+        print("---------------")
+        print("HERE ARE MY TWO GUESSES ")
+        print(str(guess))
+        print(str(current_guess))
         if guess.get_score() > current_guess.get_score():
             return guess_set
         elif guess.get_score() < current_guess.get_score():
@@ -187,44 +158,20 @@ def find_best_guess_set(guess_set, current_guess):
             return guess_set
 
 
-# def fit(grid, guess, guess_map):
-#     guess_direction = guess.get_direction()
-#     guess_position = guess.get_position()
-#     guess_length = guess.get_length()
-#     guess_string = guess.get_string()
-
-#     if guess_direction == 'A': #across
-#         for index in range(guess_length):
-#             grid[guess_position[0]][guess_position[1]+index] = guess_string[index]
-#             guess_map[(guess_position[0], guess_position[1]+index)] = guess
-#     elif guess_direction == 'D': #down
-#         for index in range(guess_length):
-#             grid[guess_position[0]+index][guess_position[1]] = guess_string[index]
-#             guess_map[(guess_position[0]+index, guess_position[1])] = guess
-
-# def fit_best(state_grid, guess, guess_map, visited_clues):
-#     guess_direction = guess.get_direction()
-#     guess_position = guess.get_position()
-#     guess_length = guess.get_length()
-#     guess_string = guess.get_string()
-
-#     if guess_direction == 'A': #across
-#         for index in range(guess_length):
-#             if state_grid[guess_position[0]][guess_position[1]+index] != guess_string[index]:
-#                 conflict_guess = guess_map[(guess_position[0], guess_position[1]+index)]
-#                 guess = guess if guess.get_score() > conflict_guess.get_score() else conflict_guess
-
-#     elif guess_direction == 'D': #down
-#         for index in range(guess_length):
-#             grid[guess_position[0]+index][guess_position[1]] = guess_string[index]
-#             guess_map[(guess_position[0]+index, guess_position[1])] = guess
-
 def init_grid(clues, size):
     blank = [["[-]" for i in range(size)] for i in range(size)]
+
+    print_grid(blank)
+
     for clue in clues:
         clue_direction = clue.get_direction()
         clue_position = clue.get_position()
         clue_length = clue.get_length()
+        print(str(clue))
+        print(clue_direction)
+        print(clue_position)
+        print(clue_length)
+
         if clue_direction == 'A':
             for index in range(clue_length):
                 blank[clue_position[0]][clue_position[1]+index] = None
@@ -320,45 +267,45 @@ def collide(guess, other_guess):
                     return (guess, other_guess)
     
     return None
-
-
-
-
-    # guess_set.add(guess_position)
-    # other_guess_set.add(other_guess_position)
-
-    # if guess_direction == "A":
-    #     for i in range(guess_length):
-    #         new_position = (guess_position[0], guess_position[1]+i)
-    #         guess_set.add(new_position)
-
-    # elif guess_direction == "D":
-    #     for i in range(guess_length):
-    #         new_position = (guess_position[0]+i, guess_position[1])
-    #         guess_set.add(new_position)
     
-    # if other_guess_direction == "A":
-    #     for i in range(other_guess_length):
-    #         new_position = (other_guess_position[0], other_guess_position[1]+i)
-    #         other_guess_set.add(new_position)
+def partition_clue(clue:Clue):
+    if "*" in clue.description:
+        return google_searcher.get_blank_answers
+    elif '"' in clue.description:
+        return google_searcher.get_quote_answers
+    else:
+        return datamuse.get_answers
 
-    # elif other_guess_direction == "D":
-    #     for i in range(other_guess_length):
-    #         new_position = (other_guess_position[0]+i, other_guess_position[1])
-    #         other_guess_set.add(new_position)
+# def BFS(state_grid, clues):
+#     state_queue = []
+#     solution_list = []
+#     visited_clues = {}
+#     visited_states = {}
 
-    # intersection = other_guess_set.intersection(guess_set)
+#     if verbose:
+#         print()
+#         print("------->     STARTING BFS  ")
+#         print("Current Clues: ")
+#         print_cluelist(clues)
+#         print("Current Visited Clues: " )
+#         print_cluelist(list(visited_clues))
+#     # Revisit this. BFS needs a start trigger but maybe shouldn't be random?
+#     first_clue = random.choice(clues)
+#     state_queue.append(first_clue)
+#     visited_clues.add(first_clue)
 
-
-    # return len(intersection) != 0        
-   
-
-    
-    
-# def partition_clue(clue:Clue):
-#     if "*" in clue.description:
-#         return google_searcher.get_blank_answers
-#     elif '"' in clue.description:
-#         return google_searcher.get_quote_answers
-#     else:
-#         return datamuse.get_answers
+#     while state_queue:
+#         clue = state_queue.pop()
+#         possible_guesses = generate_guesses(state_grid, clues, visited_clues)
+#         for guess in possible_guesses:
+#             if check_fit(state_grid, guess) == "fit":
+#                 new_child = fit(state_grid, guess)
+#                 print_grid(new_child)
+#                 tuple_v = grid_to_tuple(new_child)
+#                 if (tuple_v not in visited_states):
+#                     visited_clues.add(guess.get_clue())
+#                     visited_states.add(tuple_v)
+#                     state_queue.append()
+#             elif check_fit(state_grid, guess) == "collision":
+#                 new_child = change_rank(state_grid, guess, )
+#     return solution_list

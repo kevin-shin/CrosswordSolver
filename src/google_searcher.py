@@ -3,6 +3,7 @@ from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 import stanfordnlp
 from clue import Clue
+from guess import Guess
 import re
 
 def search_google(clue:str):
@@ -42,7 +43,7 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
 
     matches = re.findall(r,results)
 
-    ret = [word for match in matches for word in match.split(" ") if word.lower() not in q.split(" ")]
+    ret = [Guess(clue, word, 10000000) for match in matches for word in match.split(" ") if word.lower() not in q.split(" ")]
 
     return ret
 

@@ -10,7 +10,7 @@ class Guess():
         return self.clue.get_direction()
     
     def get_length(self):
-        return self.clue.get_length()
+        return len(self.string)
     
     def get_position(self):
         return self.clue.get_position()
@@ -26,6 +26,12 @@ class Guess():
 
     def __lt__(self, other):
         return self.score < other.score
+
+    def __eq__(self, other):
+        return self.string == other.string
+
+    def __hash__(self):
+        return hash(str(self))
 
     def __str__(self):
         return "GUESS// " + "CLUE: " + str(self. clue) + " GUESS: " + str(self.string)

@@ -81,17 +81,6 @@
             },
             {
                 "clue": {
-                    "row": 2,
-                    "column": 0,
-                    "length": 5,
-                    "direction": "D",
-                    "description": "Time for some self-pampering",
-                    "number": 3,
-                    "num_filled": 0
-                }
-            },
-            {
-                "clue": {
                     "row": 1,
                     "column": 3,
                     "length": 4,
