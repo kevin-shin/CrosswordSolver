@@ -33,7 +33,7 @@ def clean_results(clue, result_list, words_only=True):
     results = []
     for item in result_list:
         if words_only:
-            guess = Guess(clue, item["word"])
+            guess = Guess(clue, item["word"], item["score"])
             results.append(guess)
         else:
             pass
