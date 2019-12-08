@@ -1,7 +1,7 @@
 from clue import Clue
 from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from datamuse import get_answers
-from printer import print_grid, print_cluelist
+from printer import print_grid, print_cluelist, print_guess_set
 import random
 import datamuse
 
@@ -13,7 +13,9 @@ class Solver():
         #TODO XML parser
         self.puzzle = puzzle
         self.size = puzzle.size * puzzle.size
-        self.grid = init_grid(self.puzzle)
+        self.grid = init_grid(self.puzzle.clues, self.puzzle.size)
+        print("INIT GRID")
+        print_grid(self.grid)
 
     def solve(self, solve_method):
         if solve_method == "DFS":
@@ -34,14 +36,19 @@ class Solver():
 
 
 def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_list):
-    print()
+
+    print("NEW DFS")
     print("------->     STARTING DFS  ")
+    print("Current Guesses: ")
+    print_guess_set(guess_set)
     print("Current Clues: ")
     print_cluelist(clues)
     print("Current Visited Clues: " )
     print_cluelist(list(visited_clues))
     print("Clues I haven't visisted: ")
     print_cluelist(set(clues).difference(visited_clues))
+    print("CURRENT GRID: ")
+    print_grid(state_grid)
 
     size = len(state_grid)
 
@@ -49,19 +56,27 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_li
         solution_list.append(state_grid)
 
     possible_guesses = generate_guesses(state_grid, clues, visited_clues)
+    print("POSSIBLE GUESSES")
+    print_guess_set(set(possible_guesses))
 
     for guess in possible_guesses:
         if check_fit(state_grid, guess) == "fit":
+            print("HIT FIT")
             guess_set.add(guess)
-            state_grid = make_grid_from_guesses(guess_set, size)
+            print("NEW GUESS SET")
+            print_guess_set(guess_set)
+            state_grid = make_grid_from_guesses(guess_set, clues, size)
+            print_grid(state_grid)
             tuple_v = grid_to_tuple(state_grid)
             if (tuple_v not in visited_states):
                 visited_clues.add(guess.get_clue())
                 visited_states.add(tuple_v)
                 DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_list)
         elif check_fit(state_grid, guess) == "collision":
+            print("HIT COLLISION")
             best_guess_set = find_best_guess_set(guess_set, guess)
-            state_grid = make_grid_from_guesses(guess_set, size)
+            print_guess_set(best_guess_set)
+            state_grid = make_grid_from_guesses(guess_set, clues, size)
             tuple_v = grid_to_tuple(state_grid)
             if (tuple_v not in visited_states):
                 visited_states.add(tuple_v)
@@ -108,7 +123,6 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_li
 #     return solution_list
 
 
-
 ################################################################################################################ 
 #                                         Helper Methods                                                       #
 ################################################################################################################ 
@@ -128,7 +142,6 @@ def generate_guesses(state_grid, clues, visited_clues):
         # clue_guesses = answer_func(clue, 1)
         clue_guesses = get_answers(clue, 1)
         guesses.extend(clue_guesses)
-    
     return guesses
 
 def check_fit(grid, guess):
@@ -165,7 +178,6 @@ def find_best_guess_set(guess_set, current_guess):
         return guess_set
     
     else:
-        print(collide_guess)
         guess, current_guess = collide_guess[0][0], collide_guess[0][1]
         if guess.get_score() > current_guess.get_score():
             return guess_set
@@ -207,22 +219,24 @@ def find_best_guess_set(guess_set, current_guess):
 #             grid[guess_position[0]+index][guess_position[1]] = guess_string[index]
 #             guess_map[(guess_position[0]+index, guess_position[1])] = guess
 
-def init_grid(puzzle):
-    blank = [["[-]" for i in range(puzzle.size)] for i in range(puzzle.size)]
-    for clue in puzzle.clues:
+def init_grid(clues, size):
+    blank = [["[-]" for i in range(size)] for i in range(size)]
+    for clue in clues:
         clue_direction = clue.get_direction()
         clue_position = clue.get_position()
         clue_length = clue.get_length()
         if clue_direction == 'A':
             for index in range(clue_length):
                 blank[clue_position[0]][clue_position[1]+index] = None
-        elif clue_direction == 'A':
+        elif clue_direction == 'D':
             for index in range(clue_length):
                 blank[clue_position[0]+index][clue_position[1]] = None
     return blank
 
-def make_grid_from_guesses(guesses, size):
-    state_grid = [["[-]" for i in range(size)] for i in range(size)]
+def make_grid_from_guesses(guesses, clues, size):
+
+    state_grid = init_grid(clues, size)
+
     for guess in guesses:
         guess_direction = guess.get_direction()
         guess_position = guess.get_position()
@@ -232,7 +246,7 @@ def make_grid_from_guesses(guesses, size):
         if guess_direction == 'A':
             for index in range(guess_length):
                 state_grid[guess_position[0]][guess_position[1]+index] = guess_string[index]
-        elif guess_direction == 'A':
+        elif guess_direction == 'D':
             for index in range(guess_length):
                 state_grid[guess_position[0]+index][guess_position[1]] = guess_string[index]
     return state_grid

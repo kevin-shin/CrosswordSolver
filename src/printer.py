@@ -24,3 +24,8 @@ def print_puzzle(puzzle):
 def print_cluelist(clue_list):
     for clue in clue_list:
         print("   " + str(clue))
+
+def print_guess_set(guess_set):
+    for guess in guess_set:
+         print("   " + str(guess))
+
