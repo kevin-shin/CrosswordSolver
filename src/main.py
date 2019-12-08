@@ -6,7 +6,7 @@ verbose = True
 
 
 if __name__ == "__main__":
-    example_puzzle = Puzzle.from_file("data/example_puzzle.json")
+    example_puzzle = Puzzle.from_file("../data/example_puzzle.json")
     print_puzzle(example_puzzle)
     solver = Solver(example_puzzle)
     dfs_solution = solver.solve("DFS")
