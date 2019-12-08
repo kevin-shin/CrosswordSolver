@@ -3,6 +3,9 @@ from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from datamuse import get_answers
 from printer import print_grid, print_cluelist
 import random
+import datamuse
+import google_searcher
+
 
 verbose = True
 
@@ -123,7 +126,8 @@ def generate_guesses(state_grid, clues, visited_clues):
 
     for clue in not_used_list:
         #eventually need to be a little smarter about this, which is why state_grid is there but not used. 
-        clue_guesses = get_answers(clue, 1)
+        answer_func = partition_clue(clue)
+        clue_guesses = answer_func(clue, 1)
         guesses.extend(clue_guesses)
     
     return guesses
@@ -335,3 +339,10 @@ def collide(guess, other_guess):
 
     
     
+def partition_clue(clue:Clue):
+    if "*" in clue.description:
+        return google_searcher.get_blank_answers
+    elif '"' in clue.description:
+        return google_searcher.get_quote_answers
+    else:
+        return datamuse.get_answers
