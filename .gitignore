@@ -4,4 +4,4 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
-__pycache__/*
+src/__pycache__/*
