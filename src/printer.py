@@ -1,5 +1,6 @@
 def print_grid(matrix):
     print("_________________________________")
+    print()
     for row in matrix:
         for col in row: 
             if col == "[-]":

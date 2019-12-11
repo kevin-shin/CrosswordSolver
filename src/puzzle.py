@@ -3,7 +3,6 @@ import os
 
 from clue import Clue
 
-
 class Puzzle():
     def __init__(self, size, clues):
         self.size = size
