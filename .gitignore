@@ -4,6 +4,4 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
-src/__pycache__/clue.cpython-37.pyc
-src/__pycache__/datamuse.cpython-37.pyc
-src/__pycache__/puzzle.cpython-37.pyc
+src/__pycache__/*
