@@ -9,16 +9,9 @@ def get_answers(clue:Clue, limit = 10, words_only=True):
     """Takes in a Clue object and returns a list of words (optionally associated with scores) which
         are potential answers to the given clue."""
     params = {}
-    length = clue.length
-    parts = clue.description.split(" _ ",maxsplit=1)
+    length = clue.get_length()
 
-    if len(parts) > 1:
-        params['lc'] = parts[0].split(" ")[-1]
-        if parts[1] != '':
-            params['rc'] = parts[1].split(" ")[0]
-    else:
-        params["ml"] = clue.description
-    
+    params["ml"] = clue.description
     params["sp"] = "?" * clue.length
 
     results = clean_results(clue, request(params),words_only=words_only)[:limit]

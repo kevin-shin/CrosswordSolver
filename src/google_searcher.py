@@ -27,7 +27,7 @@ def search_google(clue:str):
 
 def clean_result(result:str):
     result = result.lower()
-    result.replace(u'\xa0', u' ').replace(", ...",".").replace(" ...",".").replace("..."," ")
+    result.replace(u'\xa0', u' ').replace(", ...",". ").replace(" ...",". ").replace("...",". ")
     result = ''.join(c for c in result if c.isalpha() or c == " ")
 
     return result
