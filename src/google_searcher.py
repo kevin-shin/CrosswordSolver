@@ -39,7 +39,6 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
     q = q.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
 
     r = re.compile(q)
-    print("R",r,"Q",q)
 
     matches = re.findall(r,results)
 
