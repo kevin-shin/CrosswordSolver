@@ -34,11 +34,19 @@ def clean_result(result:str):
 
 
 def get_blank_answers(clue:Clue,limit=10,words_only=True):
-    q = clue.get_description().lower()
+    """Searches google for answers to fill in the blank questions."""
+    
+    # quote wrap and google
+    q = '"{}"'.format(clue.get_description().lower())
     results = " ".join(i for i in search_google(q))
-    q = q.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
+
+    # regex search only for the words immediately before and after the blank
+    q_split = q.split(" ")
+    q_around_blank = " ".join([q_split[q_split.index("*")-1],"*",q_split[q_split.index("*")+1]])
+    q = q_around_blank.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
 
     r = re.compile(q)
+    print("REGEX FOR WORDS BEFORE AND AFTER CLUE:", r)
 
     matches = re.findall(r,results)
 
