@@ -46,7 +46,6 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
     q = q_around_blank.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
 
     r = re.compile(q)
-    print("REGEX FOR WORDS BEFORE AND AFTER CLUE:", r)
 
     matches = re.findall(r,results)
 
