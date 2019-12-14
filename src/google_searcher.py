@@ -17,14 +17,14 @@ def search_google(clue:str):
     for script in soup(["script","style"]):
         script.decompose()
 
-    with open("google.html","w",encoding="utf-8") as f:
-        f.write(str(soup.prettify()))
+    # with open("google.html","w",encoding="utf-8") as f:
+    #     f.write(str(soup.prettify()))
 
     for s in soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True):
         if "·" not in s.text:
             outtext.append(clean_result(s.text))
-    print("SEARCH GOOGLE")
-    print(soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True))
+    # print("SEARCH GOOGLE")
+    # print(soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True))
     return outtext
 
 def clean_result(result:str):
@@ -40,15 +40,7 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
     
     # quote wrap and google
     q = '"{}"'.format(clue.get_description().lower())
-    print("HERE IS FIRST Q ")
-    print(q)
-
-    print(search_google(q))
-
     results = " ".join(i for i in search_google(q))
-
-    print("HERE IS RESULTS")
-    print(results)
 
     # regex search only for the words immediately before and after the blank
     q_split = q.split(" ")
@@ -56,15 +48,9 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
     q = q_around_blank.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
     r = re.compile(q)
 
-    print("HERE IS Q")
-    print(q)
-    print("HERE IS R")
-    print(r)
-
     matches = re.findall(r,results)
 
     ret = [Guess(clue, word, 10000000) for match in matches for word in match.split(" ") if word.lower() not in q.split(" ")]
-    print(ret)
     return ret
 
 def get_quote_answers(clue:Clue,limit=10,words_only=True):

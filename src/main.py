@@ -1,6 +1,8 @@
-from solver import Solver, matrix_score
+from solver import Solver, matrix_score, make_grid_from_guesses
 from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from printer import print_puzzle, print_grid
+from clue_solutions import guess_set_score
+from printer import print_guess_set
 
 if __name__ == "__main__":
     example_puzzle = Puzzle.from_file("data/test_puzzle_1.json")
@@ -11,8 +13,9 @@ if __name__ == "__main__":
     print("#########################################")
     print("########## SOLUTIONS GENERATED ##########")
     print("#########################################")
-    print_grid(dfs_solution)
+    print_guess_set(dfs_solution)
+    print_grid(make_grid_from_guesses(dfs_solution,example_puzzle.clues,example_puzzle.size))
     print("HERE IS THE SCORE")
-    print(matrix_score(dfs_solution))
+    print(guess_set_score(dfs_solution))
 
 
