@@ -40,7 +40,7 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_soluti
     size = len(state_grid)
     
     if len(visited_clues) == len(clues) or is_full(state_grid):
-        return best_solution
+        return guess_set
 
     possible_guesses = generate_guesses(clues, visited_clues)
 
@@ -74,7 +74,7 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_soluti
             visited_states.add(tuple_v)
             DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_solution)
 
-    return best_solution
+    return guess_set
 
 
 ################################################################################################################ 

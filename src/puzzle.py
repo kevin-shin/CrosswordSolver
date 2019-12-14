@@ -46,7 +46,7 @@ class PuzzleDecoder(json.JSONDecoder):
         if 'clue' in dct:
             return Clue(dct['clue']['row'],dct['clue']['column'],
             dct['clue']['length'],dct['clue']['direction'],dct['clue']['description'],
-            dct['clue']['number'])
+            dct['clue']['number'], dct['clue']['solution'])
         elif "puzzle" in dct:
             return Puzzle(dct["puzzle"]["size"],dct["puzzle"]["clues"])
         return dct

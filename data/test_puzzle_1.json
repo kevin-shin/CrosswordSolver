@@ -10,7 +10,8 @@
                     "direction": "A",
                     "description": "large serpent",
                     "number": 1,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution": "boa"
                 }
             },
             {
@@ -21,7 +22,8 @@
                     "direction": "D",
                     "description": "gothic architecture feature",
                     "number": 2,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution": "gable"
                 }
             },
             {
@@ -32,7 +34,8 @@
                     "direction": "D",
                     "description": " * the hill and through the woods",
                     "number": 3,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution": "over"
                 }
             },
             {
@@ -43,7 +46,8 @@
                     "direction": "A",
                     "description": "skewered meat dish",
                     "number": 4,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution": "kebab"
                 }
             }
         ]
