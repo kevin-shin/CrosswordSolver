@@ -6,25 +6,31 @@ from clue import Clue
 from guess import Guess
 import re
 
+google_cache = {}
+
 def search_google(clue:str):
     
-    url = "https://google.com/search"
-    page = requests.get(url,params={"q":clue},headers={"user-agent":"Mozilla/5.0"})
-    soup = BeautifulSoup(page.content,features='html5lib') 
-
     outtext = []
+    
+    if clue not in google_cache.keys():
+        print("RUNNING NEW GOOGLE SEARCH")
+        url = "https://google.com/search"
+        page = requests.get(url,params={"q":clue},headers={"user-agent":"Mozilla/5.0"})
+        soup = BeautifulSoup(page.content,features='html5lib') 
 
-    for script in soup(["script","style"]):
-        script.decompose()
+        for script in soup(["script","style"]):
+            script.decompose()
 
-    # with open("google.html","w",encoding="utf-8") as f:
-    #     f.write(str(soup.prettify()))
+        for s in soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True):
+            if "·" not in s.text:
+                outtext.append(clean_result(s.text))
+        
+        google_cache[clue] = outtext
 
-    for s in soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True):
-        if "·" not in s.text:
-            outtext.append(clean_result(s.text))
-    # print("SEARCH GOOGLE")
-    # print(soup.find_all("div",{"class":["BNeawe s3v9rd AP7Wnd","BNeawe deIvCb AP7Wnd","BNeawe vvjwJb AP7Wnd"]},text=True))
+    else:
+        print("RETRIEVING CACHED GOOGLE SEARCH")
+        outtext = google_cache[clue]
+   
     return outtext
 
 def clean_result(result:str):
