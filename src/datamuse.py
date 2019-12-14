@@ -20,7 +20,12 @@ def get_answers(clue:Clue, limit = 10, words_only=True):
 
 def request(params:dict):
     r = requests.get(DATAMUSE_URL,params)
-    return r.json()
+    try:
+        return r.json()
+    except:
+        print(r.json())
+        return "{{}}"
+
 
 def clean_results(clue, result_list, words_only=True):
     results = []
@@ -32,7 +37,3 @@ def clean_results(clue, result_list, words_only=True):
             pass
             # results.append((item["word"],item["score"]))
     return results
-
-
-# if __name__ == "__main__":
-#     print(get_answers(Clue(0,0,5,"A","as american as _ pie",1)))

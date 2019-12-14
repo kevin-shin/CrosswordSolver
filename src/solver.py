@@ -6,8 +6,8 @@ import random
 import datamuse
 import google_searcher 
 
-printInit = True
-printDFSIteration = True
+printInit = False
+printDFSIteration = False
 printGuessAndGrid = True
 
 class Solver():
@@ -21,7 +21,7 @@ class Solver():
             print_grid(self.grid)
 
     def solve(self, solve_method):
-        return DFS(self.grid, self.puzzle.clues, set(), set(), set(), [])
+        return DFS(self.grid, self.puzzle.clues, set(), set(), set(), self.grid)
 
     def get_size(self):
         return self.size
@@ -35,25 +35,12 @@ class Solver():
 ##########################################################################################################       
 
 
-def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_list):
-    if printDFSIteration:
-        print()
-        print("##########   DFS Called ")
-        print("Current Guesses: ")
-        print_guess_set(guess_set)
-        print("Current Clues: ")
-        print_cluelist(clues)
-        print("Current Visited Clues: " )
-        print_cluelist(list(visited_clues))
-        print("Clues I haven't visisted: ")
-        print_cluelist(set(clues).difference(visited_clues))
-        print("CURRENT GRID: ")
-        print_grid(state_grid)
+def DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_solution):
 
     size = len(state_grid)
-
+    
     if len(visited_clues) == len(clues) or is_full(state_grid):
-        solution_list.append(state_grid)
+        return best_solution
 
     possible_guesses = generate_guesses(clues, visited_clues)
 
@@ -65,7 +52,17 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_li
             guess_set = find_best_guess_set(guess_set, guess)
         elif check_fit(state_grid, guess) == "bounds_error":
             continue
+
         state_grid = make_grid_from_guesses(guess_set, clues, size)
+
+        if matrix_score(state_grid) > matrix_score(best_solution):
+            best_solution = state_grid
+
+        if printDFSIteration:
+            print()
+            print("CURRENT GRID: ")
+            print_grid(state_grid)
+
         if printGuessAndGrid:
             print("NEW GUESS SET")
             print_guess_set(guess_set)
@@ -75,9 +72,9 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_li
         tuple_v = grid_to_tuple(state_grid)
         if (tuple_v not in visited_states):
             visited_states.add(tuple_v)
-            DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_list)
+            DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_solution)
 
-    return solution_list
+    return best_solution
 
 
 ################################################################################################################ 
@@ -90,7 +87,6 @@ def generate_guesses(clues, visited_clues):
     clue_set = set(clues)
     not_used_clues = clue_set.difference(visited_clues)
     not_used_list = list(not_used_clues)
-
     guesses = []
 
     for clue in not_used_list:
@@ -99,7 +95,6 @@ def generate_guesses(clues, visited_clues):
         answer_func = partition_clue(clue)
         clue_guesses = answer_func(clue, 3)
         guesses.extend(clue_guesses)
-
     return guesses
 
 
@@ -135,15 +130,18 @@ def find_best_guess_set(guess_set, current_guess):
     
     if len(collide_guess) > 1 or len(collide_guess) == 0:
         return guess_set
-    
     else:
         guess, current_guess = collide_guess[0][0], collide_guess[0][1]
         if guess.get_score() > current_guess.get_score():
             return guess_set
-        elif guess.get_score() < current_guess.get_score():
+        elif guess.get_score() <= current_guess.get_score():
             guess_set.remove(guess)
             guess_set.add(current_guess)
             return guess_set
+    
+    if guess_set == None: 
+        print("FIND BEST GUESS SET IS GOING WRONG")
+
 
 
 def init_grid(clues, size):
@@ -251,7 +249,6 @@ def collide(guess, other_guess):
     
     return None
     
-
 def partition_clue(clue:Clue):
     if "*" in clue.description:
         return google_searcher.get_blank_answers
@@ -259,3 +256,18 @@ def partition_clue(clue:Clue):
         return google_searcher.get_quote_answers
     else:
         return datamuse.get_answers
+
+def matrix_score(grid):
+    num_rows = len(grid)
+    num_cols = len(grid[0])
+    
+    total = num_rows * num_cols
+
+    solved = 0
+
+    for row in range(num_rows):
+        for col in range(num_cols):
+            if grid[row][col] != "[-]" and grid[row][col] != None:
+                 solved += 1
+    
+    return solved/total
