@@ -15,3 +15,4 @@ def compare_answers(guess_answer, correct_answer):
             num_correct += 1
     
     return num_correct
+
