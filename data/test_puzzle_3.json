@@ -10,7 +10,8 @@
                     "direction": "A",
                     "description": "a mountain that erupts with hot rocks and ash",
                     "number": 1,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"volcano"
                 }
             },
             {
@@ -21,7 +22,8 @@
                     "direction": "D",
                     "description": "when the earth is in the moon's shadow it is called a * eclipse",
                     "number": 2,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"lunar"
                 }
             },
             {
@@ -32,7 +34,8 @@
                     "direction": "D",
                     "description": "the opposite of before",
                     "number": 3,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"after"
                 }
             },
             {
@@ -43,7 +46,8 @@
                     "direction": "A",
                     "description": "you * up all the numbers",
                     "number": 4,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"add"
                 }
             },
 			{
@@ -54,7 +58,8 @@
                     "direction": "D",
                     "description": "homer simpson is famous for this expression",
                     "number": 5,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"doh"
                 }
             },
 			{
@@ -65,7 +70,8 @@
                     "direction": "A",
                     "description": "not wet",
                     "number": 6,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"dry"
                 }
             },
 			{
@@ -76,7 +82,8 @@
                     "direction": "D",
                     "description": "move quickly on your legs",
                     "number": 7,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"run"
                 }
             },
 			{
@@ -87,7 +94,8 @@
                     "direction": "A",
                     "description": "large monkey",
                     "number": 8,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"ape"
                 }
             },
 			{
@@ -98,7 +106,8 @@
                     "direction": "A",
                     "description": "you sit on this",
                     "number": 9,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"chair"
                 }
             },
 			{
@@ -109,7 +118,8 @@
                     "direction": "D",
                     "description": "the liquid in a pen",
                     "number": 10,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"ink"
                 }
             },
 			{
@@ -120,7 +130,8 @@
                     "direction": "A",
                     "description": "the shape of a circle",
                     "number": 11,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"round"
                 }
             },
 			{
@@ -131,7 +142,8 @@
                     "direction": "D",
                     "description": "the exit is the way * ",
                     "number": 12,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"out"
                 }
             },
 			{
@@ -142,7 +154,8 @@
                     "direction": "A",
                     "description": "another word for shiver or shudder",
                     "number": 13,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"shake"
                 }
             },
 			{
@@ -153,7 +166,8 @@
                     "direction": "D",
                     "description": "a type of sandwich meat",
                     "number": 14,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"ham"
                 }
             },
 			{
@@ -164,7 +178,8 @@
                     "direction": "D",
                     "description": "the name of our planet",
                     "number": 15,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"earth"
                 }
             },
 			{
@@ -175,7 +190,8 @@
                     "direction": "D",
                     "description": "to throw a ball into the air and hit it to start a game of tennis",
                     "number": 16,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"serve"
                 }
             },
 			{
@@ -186,7 +202,8 @@
                     "direction": "A",
                     "description": "what a bee or wasp might do if it lands on you",
                     "number": 16,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"sting"
                 }
             },
 			{
@@ -197,7 +214,8 @@
                     "direction": "D",
                     "description": "pecan, cashew, or macadamia",
                     "number": 17,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"nut"
                 }
             },
 			{
@@ -208,7 +226,8 @@
                     "direction": "A",
                     "description": "the card higher than the king",
                     "number": 18,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"ace"
                 }
             },
 			{
@@ -219,7 +238,8 @@
                     "direction": "A",
                     "description": "large flightless australian bird",
                     "number": 19,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"emu"
                 }
             },
 			{
@@ -230,7 +250,8 @@
                     "direction": "A",
                     "description": "devoured food",
                     "number": 20,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"ate"
                 }
             },
 			{
@@ -241,7 +262,8 @@
                     "direction": "A",
                     "description": "someone who takes part in sporting events",
                     "number": 21,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"athlete"
                 }
             }
         ]
