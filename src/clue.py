@@ -27,3 +27,9 @@ class Clue:
 
     def __str__(self):
         return "Clue ({}) at position {}: {}".format(self.direction, (self.row, self.column), self.description)
+
+    def __eq__(self,other):
+        return type(other) == type(self) and self.description == other.description
+    
+    def __hash__(self):
+        return hash(self.description)

@@ -5,6 +5,7 @@ def guess_set_score(guess_set):
         correct_solution = guess.get_clue().get_solution()
         guess_solution = guess.get_string()
         num_correct += compare_answers(guess_solution, correct_solution)
+        num_total += len(guess_solution)
     
     return num_correct/num_total
 

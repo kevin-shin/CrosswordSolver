@@ -7,7 +7,7 @@ import datamuse
 import google_searcher 
 
 printInit = False
-printDFSIteration = False
+printDFSIteration = True
 printGuessAndGrid = True
 
 class Solver():
@@ -62,6 +62,7 @@ def DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_soluti
             print()
             print("CURRENT GRID: ")
             print_grid(state_grid)
+            print_cluelist(clues)
 
         if printGuessAndGrid:
             print("NEW GUESS SET")
