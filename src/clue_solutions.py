@@ -16,3 +16,6 @@ def compare_answers(guess_answer, correct_answer):
             num_correct += 1
     
     return num_correct
+
+def puzzle_complexity(puzzle):
+    return len(puzzle.clues) / (puzzle.size ** 2)
