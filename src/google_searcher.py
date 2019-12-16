@@ -51,8 +51,13 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
         r = re.compile(regex)
 
         matches = re.findall(r,results)
-
-        ret = [Guess(clue, word, 10000000) for match in matches for word in match.split(" ") if word.lower() not in q.split(" ")]
+        words = []
+        for match in matches:
+            for word in match.split(" "):
+                if word.lower() not in regex.split(" "):
+                    words.append(word)
+        scores = score_words(words)
+        ret = [Guess(clue, word, score) for word, score in scores]
         google_cache[clue] = ret
         return ret
     else:
@@ -76,6 +81,9 @@ def word_counts(word_list):
 def score_words(word_list):
     score_tuples = []
     counts = word_counts(word_list)
+    for word in counts.keys():
+        score_tuples.append((word,counts[word] * 25000))
+    return sorted(score_tuples,key=lambda x: x[1],reverse=True)
     # TODO develop word scoring for google
 
 
