@@ -84,7 +84,6 @@ def score_words(word_list):
     for word in counts.keys():
         score_tuples.append((word,counts[word] * 25000))
     return sorted(score_tuples,key=lambda x: x[1],reverse=True)
-    # TODO develop word scoring for google
 
 
 
