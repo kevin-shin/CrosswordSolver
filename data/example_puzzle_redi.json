@@ -1,6 +1,6 @@
 {
     "puzzle": {
-        "size": 8,
+        "size": 9,
         "clues": [
             {
                 "clue": {
@@ -10,7 +10,8 @@
                     "direction": "D",
                     "description": "mix",
                     "number": 1,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"stir"
                 }
             },
             {
@@ -21,7 +22,8 @@
                     "direction": "A",
                     "description": "something used to make tea",
                     "number": 2,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"tealeaves"
                 }
             },
             {
@@ -32,7 +34,8 @@
                     "direction": "D",
                     "description": "coffee and milk",
                     "number": 3,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"latte"
                 }
             },
             {
@@ -41,9 +44,10 @@
                     "column": 5,
                     "length": 5,
                     "direction": "D",
-                    "description": "ice *",
+                    "description": "ice * ",
                     "number": 4,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"cream"
                 }
             },
             {
@@ -54,7 +58,8 @@
                     "direction": "D",
                     "description": "something used to eat soup",
                     "number": 5,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"spoon"
                 }
             }
         ]
