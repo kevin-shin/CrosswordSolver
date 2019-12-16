@@ -1,0 +1,103 @@
+{
+    "puzzle": {
+        "size": 5,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "encore",
+                    "number": 1,
+                    "num_filled": 0,
+                    "solution":"again"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 2,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "the lesser of two * ",
+                    "number": 2,
+                    "num_filled": 0,
+                    "solution":"evils"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 4,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "motionless",
+                    "number": 3,
+                    "num_filled": 0,
+                    "solution":"inert"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "specified, as a date",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution":"given"
+                }
+            },
+			{
+                "clue": {
+                    "row": 1,
+                    "column": 1,
+                    "length": 3,
+                    "direction": "D",
+                    "description": "ailing",
+                    "number": 5,
+                    "num_filled": 0,
+                    "solution":"ill"
+                }
+            },
+			{
+                "clue": {
+                    "row": 1,
+                    "column": 3,
+                    "length": 3,
+                    "direction": "D",
+                    "description": "preceder to christmas day",
+                    "number": 6,
+                    "num_filled": 0,
+                    "solution":"eve"
+                }
+            },
+			{
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "animate",
+                    "number": 7,
+                    "num_filled": 0,
+                    "solution":"alive"
+                }
+            },
+			{
+                "clue": {
+                    "row": 3,
+                    "column": 0,
+                    "length": 3,
+                    "direction": "A",
+                    "description": "river through bavaria",
+                    "number": 8,
+                    "num_filled": 0,
+                    "solution":"iller"
+                }
+            }
+        ]
+    }
+}

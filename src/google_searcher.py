@@ -5,6 +5,7 @@ import stanfordnlp
 from clue import Clue
 from guess import Guess
 import re
+from time import sleep
 
 google_cache = {}
 
@@ -23,6 +24,7 @@ def search_google(clue:str):
             outtext.append(clean_result(s.text))
     
     google_cache[clue] = outtext
+    sleep(1)
    
     return outtext
 
@@ -38,7 +40,6 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
     """Searches google for answers to fill in the blank questions."""
     
     if clue not in google_cache.keys():
-        print("RUNNING NEW GOOGLE SEARCH")
         # quote wrap and google
         q = '"{}"'.format(clue.get_description().lower())
         results = " ".join(i for i in search_google(q))
@@ -46,8 +47,8 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
         # regex search only for the words immediately before and after the blank
         q_split = q.split(" ")
         q_around_blank = " ".join([q_split[q_split.index("*")-1],"*",q_split[q_split.index("*")+1]])
-        q = q_around_blank.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
-        r = re.compile(q)
+        regex = q_around_blank.replace("*",".{{{}}}".format(clue.get_length())).strip('"')
+        r = re.compile(regex)
 
         matches = re.findall(r,results)
 
@@ -55,14 +56,27 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
         google_cache[clue] = ret
         return ret
     else:
-        print("RETRIEVING CACHED GOOGLE RESULTS")
         return google_cache[clue]
 
 def get_quote_answers(clue:Clue,limit=10,words_only=True):
     #TODO google quote, use nlp to get answer
 
     return ["random","words"]
+
+def word_counts(word_list):
+    counts = {}
+    for word in word_list:
+        if word in counts.keys():
+            counts[word] += 1
+        else:
+            counts[word] = 1
     
+    return counts
+
+def score_words(word_list):
+    score_tuples = []
+    counts = word_counts(word_list)
+    # TODO develop word scoring for google
 
 
 
