@@ -1,0 +1,67 @@
+{
+    "puzzle": {
+        "size": 6,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "made more lively",
+                    "number": 1,
+                    "num_filled": 0,
+                    "solution":"jazzed"
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "a way of doing something",
+                    "number": 2,
+                    "num_filled": 0,
+                    "solution":"method"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 1,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "a building occupied by monks",
+                    "number": 3,
+                    "num_filled": 0,
+                    "solution":"abbey"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 3,
+                    "length": 6,
+                    "direction": "D",
+                    "description": "a gentle breeze",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution":"zephyr"
+                }
+            },
+			{
+                "clue": {
+                    "row": 0,
+                    "column": 5,
+                    "length": 6,
+                    "direction": "D",
+                    "description": "a rough sketch",
+                    "number": 5,
+                    "num_filled": 0,
+                    "solution":"doodle"
+                }
+            }
+        ]
+    }
+}
