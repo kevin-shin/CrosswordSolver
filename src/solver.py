@@ -9,6 +9,7 @@ import google_searcher
 printInit = False
 printDFSIteration = True
 printGuessAndGrid = True
+blank_slots = 0
 
 class Solver():
     def __init__(self, puzzle: Puzzle):
@@ -16,6 +17,8 @@ class Solver():
         self.puzzle = puzzle
         self.size = puzzle.size * puzzle.size
         self.grid = init_grid(self.puzzle.clues, self.puzzle.size)
+        self.complexity = grid_score(self.grid)
+
         if printInit:
             print("----------> Starting Grid: INIT GRID")
             print_grid(self.grid)
@@ -145,8 +148,9 @@ def find_best_guess_set(guess_set, current_guess):
 
 
 
-def init_grid(clues, size):
+def init_grid(clues, size, complexity = False):
     blank = [["[-]" for i in range(size)] for i in range(size)]
+
     for clue in clues:
         clue_direction = clue.get_direction()
         clue_position = clue.get_position()
@@ -155,10 +159,29 @@ def init_grid(clues, size):
         if clue_direction == 'A':
             for index in range(clue_length):
                 blank[clue_position[0]][clue_position[1]+index] = None
+
         elif clue_direction == 'D':
             for index in range(clue_length):
                 blank[clue_position[0]+index][clue_position[1]] = None
+                
     return blank
+
+def grid_score(matrix):
+    empty_squares = 0
+    blocked_squares = 0
+
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
+
+    for row in range(num_rows):
+        for col in range(num_cols):
+            if matrix[row][col] == None:
+                empty_squares += 1
+            elif matrix[row][col] == "[-]":
+                blocked_squares += 1
+    
+    return empty_squares/(num_cols*num_rows)
+
 
 
 def make_grid_from_guesses(guesses, clues, size):
@@ -272,3 +295,7 @@ def matrix_score(grid):
                  solved += 1
     
     return solved/total
+
+
+def get_complexity(puzzle):
+    return blank_slots / (puzzle.size ** 2)
