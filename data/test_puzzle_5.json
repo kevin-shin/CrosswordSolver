@@ -1,0 +1,127 @@
+{
+    "puzzle": {
+        "size": 6,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "loathe",
+                    "number": 1,
+                    "num_filled": 0,
+                    "solution": "abhor"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 2,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "curtain fabric",
+                    "number": 2,
+                    "num_filled": 0,
+                    "solution": "scrim"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 4,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "pearl jam bassist jeff",
+                    "number": 3,
+                    "num_filled": 0,
+                    "solution": "ament"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "evolve into",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution": "become"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 1,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "dog * , as a used book",
+                    "number": 5,
+                    "num_filled": 0,
+                    "solution": "eared"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 3,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "classic name for a theater",
+                    "number": 6,
+                    "num_filled": 0,
+                    "solution": "odeon"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 5,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "command on a keyboard",
+                    "number": 7,
+                    "num_filled": 0,
+                    "solution": "enter"
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "solidify",
+                    "number": 8,
+                    "num_filled": 0,
+                    "solution": "harden"
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "Agatha Christie's murder on the * express",
+                    "number": 9,
+                    "num_filled": 0,
+                    "solution": "orient"
+                }
+            },
+            {
+                "clue": {
+                    "row": 4,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "distant",
+                    "number": 10,
+                    "num_filled": 0,
+                    "solution": "remote"
+                }
+            }
+        ]
+    }
+}
