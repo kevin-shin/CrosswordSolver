@@ -2,8 +2,7 @@
 A program to solve an arbitrary crossword. Main assignment for Introduction to AI, Fall 2019. 
 
 Code Architecture:
-- model: Holds data
+- data: Holds example puzzles
 - src: Holds programs
-
-
+- test: test suite
 

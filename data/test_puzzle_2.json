@@ -8,9 +8,10 @@
                     "column": 0,
                     "length": 3,
                     "direction": "A",
-                    "description": "* wrestling",
+                    "description": " * wrestling",
                     "number": 1,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"wwe"
                 }
             },
             {
@@ -21,7 +22,8 @@
                     "direction": "A",
                     "description": "Kids can makes money by losing them",
                     "number": 4,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"teeth"
                 }
             },
             {
@@ -30,9 +32,10 @@
                     "column": 0,
                     "length": 5,
                     "direction": "A",
-                    "description": "* game",
+                    "description": " * game",
                     "number": 7,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"video"
                 }
             },
             {
@@ -41,9 +44,10 @@
                     "column": 1,
                     "length": 4,
                     "direction": "A",
-                    "description": "video *",
+                    "description": "video * ",
                     "number": 8,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"game"
                 }
             },
             {
@@ -54,7 +58,8 @@
                     "direction": "A",
                     "description": "Org on Brooklyn Nine-Nine",
                     "number": 9,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"nypd"
                 }
             },
             {
@@ -65,7 +70,8 @@
                     "direction": "D",
                     "description": "Four-wheel off-roader",
                     "number": 1,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"atv"
                 }
             },
             {
@@ -76,7 +82,8 @@
                     "direction": "D",
                     "description": "Period in power",
                     "number": 2,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"reign"
                 }
             },
             {
@@ -87,7 +94,8 @@
                     "direction": "D",
                     "description": "Something measured in F or F, for short",
                     "number": 5,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"temp"
                 }
             },
             {
@@ -98,7 +106,8 @@
                     "direction": "D",
                     "description": "Worked the soil",
                     "number": 6,
-                    "num_filled": 0
+                    "num_filled": 0,
+                    "solution":"hoed"
                 }
             }
         ]

@@ -1,0 +1,271 @@
+{
+    "puzzle": {
+        "size": 18,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 0,
+                    "length": 9,
+                    "direction": "A",
+                    "description": "can not be seen",
+                    "number": 1,
+                    "num_filled": 0,
+                    "solution": "invisible"
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "want very much or crave",
+                    "number": 2,
+                    "num_filled": 0,
+                    "solution": "desire"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 4,
+                    "length": 7,
+                    "direction": "D",
+                    "description": "to stay alive in a risky situation",
+                    "number": 3,
+                    "num_filled": 0,
+                    "solution": "survive"
+                }
+            },
+            {
+                "clue": {
+                    "row": 4,
+                    "column": 1,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "An important organ inside the head which you think with.",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution": "brain"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 17,
+                    "length": 3,
+                    "direction": "D",
+                    "description": "a feeling of happiness",
+                    "number": 5,
+                    "num_filled": 0,
+                    "solution": "joy"
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 9,
+                    "length": 9,
+                    "direction": "A",
+                    "description": "exists for a limited time only",
+                    "number": 6,
+                    "num_filled": 0,
+                    "solution": "temporary"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 13,
+                    "length": 8,
+                    "direction": "D",
+                    "description": "to finish a task",
+                    "number": 7,
+                    "num_filled": 0,
+                    "solution": "complete"
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 7,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "ponder, to use your mind",
+                    "number": 8,
+                    "num_filled": 0,
+                    "solution": "think"
+                }
+            },
+            {
+                "clue": {
+                    "row": 6,
+                    "column": 3,
+                    "length": 11,
+                    "direction": "A",
+                    "description": "to show how it is done",
+                    "number": 9,
+                    "num_filled": 0,
+                    "solution": "demonstrate"
+                }
+            },
+            {
+                "clue": {
+                    "row": 5,
+                    "column": 10,
+                    "length": 7,
+                    "direction": "D",
+                    "description": "continue doing something",
+                    "number": 10,
+                    "num_filled": 0,
+                    "solution": "proceed"
+                }
+            },
+            {
+                "clue": {
+                    "row": 9,
+                    "column": 8,
+                    "length": 7,
+                    "direction": "D",
+                    "description": "a hundred years",
+                    "number": 11,
+                    "num_filled": 0,
+                    "solution": "century"
+                }
+            },
+            {
+                "clue": {
+                    "row": 9,
+                    "column": 12,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "to show something that was hidden",
+                    "number": 12,
+                    "num_filled": 0,
+                    "solution": "reveal"
+                }
+            },
+            {
+                "clue": {
+                    "row": 8,
+                    "column": 15,
+                    "length": 9,
+                    "direction": "D",
+                    "description": "allowed to do",
+                    "number": 13,
+                    "num_filled": 0,
+                    "solution": "permitted"
+                }
+            },
+            {
+                "clue": {
+                    "row": 7,
+                    "column": 17,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "on your own",
+                    "number": 14,
+                    "num_filled": 0,
+                    "solution": "solo"
+                }
+            },
+            {
+                "clue": {
+                    "row": 10,
+                    "column": 6,
+                    "length": 7,
+                    "direction": "A",
+                    "description": "gave or presented",
+                    "number": 15,
+                    "num_filled": 0,
+                    "solution": "offered"
+                }
+            },
+            {
+                "clue": {
+                    "row": 11,
+                    "column": 1,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "the center of your attention",
+                    "number": 16,
+                    "num_filled": 0,
+                    "solution": "focus"
+                }
+            },
+            {
+                "clue": {
+                    "row": 12,
+                    "column": 3,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "a statement of the intention to hurt someone",
+                    "number": 17,
+                    "num_filled": 0,
+                    "solution": "threat"
+                }
+            },
+            {
+                "clue": {
+                    "row": 12,
+                    "column": 13,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "to mix together",
+                    "number": 18,
+                    "num_filled": 0,
+                    "solution": "blend"
+                }
+            },
+            {
+                "clue": {
+                    "row": 11,
+                    "column": 5,
+                    "length": 7,
+                    "direction": "D",
+                    "description": "stop holding or let free",
+                    "number": 19,
+                    "num_filled": 0,
+                    "solution": "release"
+                }
+            },
+            {
+                "clue": {
+                    "row": 13,
+                    "column": 7,
+                    "length": 7,
+                    "direction": "A",
+                    "description": "get ready for something",
+                    "number": 20,
+                    "num_filled": 0,
+                    "solution": "prepare"
+                }
+            },
+            {
+                "clue": {
+                    "row": 14,
+                    "column": 0,
+                    "length": 6,
+                    "direction": "A",
+                    "description": "to flee in a hurry",
+                    "number": 21,
+                    "num_filled": 0,
+                    "solution": "escape"
+                }
+            },
+            {
+                "clue": {
+                    "row": 17,
+                    "column": 0,
+                    "length": 7,
+                    "direction": "A",
+                    "description": "a math question to solve",
+                    "number": 22,
+                    "num_filled": 0,
+                    "solution": "problem"
+                }
+            }
+        ]
+    }
+}

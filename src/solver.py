@@ -6,7 +6,9 @@ import random
 import datamuse
 import google_searcher 
 
-verbose = True
+printInit = False
+printDFSIteration = True
+printGuessAndGrid = True
 
 class Solver():
     def __init__(self, puzzle: Puzzle):
@@ -14,14 +16,12 @@ class Solver():
         self.puzzle = puzzle
         self.size = puzzle.size * puzzle.size
         self.grid = init_grid(self.puzzle.clues, self.puzzle.size)
-        print("INIT GRID")
-        print_grid(self.grid)
+        if printInit:
+            print("----------> Starting Grid: INIT GRID")
+            print_grid(self.grid)
 
     def solve(self, solve_method):
-        if solve_method == "DFS":
-            return DFS(self.grid, self.puzzle.clues, set(), set(), set(), [])
-        # elif solve_method == "BFS":
-        #     return BFS(self.grid, {}, {}, [])
+        return DFS(self.grid, self.puzzle.clues, set(), set(), set(), self.grid)
 
     def get_size(self):
         return self.size
@@ -30,85 +30,74 @@ class Solver():
         return str(self.puzzle) + "\n" + str(self.grid)
 
 
-################################################################################################################ 
-#                         SEARCH ALGORITHMS: DFS, BFS                                                          #
-################################################################################################################       
+########################################################################################################## 
+#                                 SEARCH ALGORITHM                                                       #
+##########################################################################################################       
 
 
-def DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_list):
-
-    print("NEW DFS")
-    print("------->     STARTING DFS  ")
-    print("Current Guesses: ")
-    print_guess_set(guess_set)
-    print("Current Clues: ")
-    print_cluelist(clues)
-    print("Current Visited Clues: " )
-    print_cluelist(list(visited_clues))
-    print("Clues I haven't visisted: ")
-    print_cluelist(set(clues).difference(visited_clues))
-    print("CURRENT GRID: ")
-    print_grid(state_grid)
+def DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_solution):
 
     size = len(state_grid)
-
+    
     if len(visited_clues) == len(clues) or is_full(state_grid):
-        solution_list.append(state_grid)
+        return guess_set
 
-    possible_guesses = generate_guesses(state_grid, clues, visited_clues)
-    print("$$$$$$$$$$$$$$$$$$$$")
-    for guess in possible_guesses:
-        print("        " + str(guess))
+    possible_guesses = generate_guesses(clues, visited_clues)
 
     for guess in possible_guesses:
         if check_fit(state_grid, guess) == "fit":
-            print("HIT FIT")
             guess_set.add(guess)
-            print("NEW GUESS SET")
-            print_guess_set(guess_set)
-            state_grid = make_grid_from_guesses(guess_set, clues, size)
-            print_grid(state_grid)
-            tuple_v = grid_to_tuple(state_grid)
-            if (tuple_v not in visited_states):
-                visited_clues.add(guess.get_clue())
-                visited_states.add(tuple_v)
-                DFS(state_grid, clues, guess_set, visited_states, visited_clues, solution_list)
+            visited_clues.add(guess.get_clue())
         elif check_fit(state_grid, guess) == "collision":
-            print("HIT COLLISION")
-            best_guess_set = find_best_guess_set(guess_set, guess)
-            print_guess_set(best_guess_set)
-            state_grid = make_grid_from_guesses(guess_set, clues, size)
-            tuple_v = grid_to_tuple(state_grid)
-            if (tuple_v not in visited_states):
-                visited_states.add(tuple_v)
-                DFS(state_grid, clues, best_guess_set, visited_states, visited_clues, solution_list)
-        else:
+            guess_set = find_best_guess_set(guess_set, guess)
+        elif check_fit(state_grid, guess) == "bounds_error":
             continue
 
-    return solution_list
+        state_grid = make_grid_from_guesses(guess_set, clues, size)
 
-#what if instead of a "do this" approach based on clue fitting, we did it based off of ranking which clues are the easiest to solve?
+        if matrix_score(state_grid) > matrix_score(best_solution):
+            best_solution = state_grid
+
+        if printDFSIteration:
+            print()
+            print("CURRENT GRID: ")
+            print_grid(state_grid)
+            print_cluelist(clues)
+
+        if printGuessAndGrid:
+            print("NEW GUESS SET")
+            print_guess_set(guess_set)
+            print("NEW GRID")
+            print_grid(state_grid)
+
+        tuple_v = grid_to_tuple(state_grid)
+        if (tuple_v not in visited_states):
+            visited_states.add(tuple_v)
+            DFS(state_grid, clues, guess_set, visited_states, visited_clues, best_solution)
+
+    return guess_set
+
 
 ################################################################################################################ 
 #                                         Helper Methods                                                       #
 ################################################################################################################ 
 
-def generate_guesses(state_grid, clues, visited_clues):
-    #major code smell. I think clues might need to be a set 
+
+def generate_guesses(clues, visited_clues):
 
     clue_set = set(clues)
     not_used_clues = clue_set.difference(visited_clues)
     not_used_list = list(not_used_clues)
-
     guesses = []
 
     for clue in not_used_list:
-        #eventually need to be a little smarter about this, which is why state_grid is there but not used. 
+        #TODO: Use information about the clues to not check for bounds_error but only call permissible clues? 
+        #might be difficult with google. 
         answer_func = partition_clue(clue)
         clue_guesses = answer_func(clue, 3)
         guesses.extend(clue_guesses)
-
     return guesses
+
 
 def check_fit(grid, guess):
     ''' Fits a guess into the grid, returning new grid'''
@@ -142,35 +131,26 @@ def find_best_guess_set(guess_set, current_guess):
     
     if len(collide_guess) > 1 or len(collide_guess) == 0:
         return guess_set
-    
     else:
         guess, current_guess = collide_guess[0][0], collide_guess[0][1]
-        print("---------------")
-        print("---------------")
-        print("HERE ARE MY TWO GUESSES ")
-        print(str(guess))
-        print(str(current_guess))
         if guess.get_score() > current_guess.get_score():
             return guess_set
-        elif guess.get_score() < current_guess.get_score():
+        elif guess.get_score() <= current_guess.get_score():
             guess_set.remove(guess)
             guess_set.add(current_guess)
             return guess_set
+    
+    if guess_set == None: 
+        print("FIND BEST GUESS SET IS GOING WRONG")
+
 
 
 def init_grid(clues, size):
     blank = [["[-]" for i in range(size)] for i in range(size)]
-
-    print_grid(blank)
-
     for clue in clues:
         clue_direction = clue.get_direction()
         clue_position = clue.get_position()
         clue_length = clue.get_length()
-        print(str(clue))
-        print(clue_direction)
-        print(clue_position)
-        print(clue_length)
 
         if clue_direction == 'A':
             for index in range(clue_length):
@@ -179,6 +159,7 @@ def init_grid(clues, size):
             for index in range(clue_length):
                 blank[clue_position[0]+index][clue_position[1]] = None
     return blank
+
 
 def make_grid_from_guesses(guesses, clues, size):
 
@@ -198,9 +179,9 @@ def make_grid_from_guesses(guesses, clues, size):
                 state_grid[guess_position[0]+index][guess_position[1]] = guess_string[index]
     return state_grid
 
+
 def grid_to_tuple(grid):
     '''For hashing reasons, we can't use lists. We need a way to make grids tuples.'''
-    
     list_to_tuple = []
     for row in grid: 
         list_to_tuple.append(tuple(row))
@@ -214,6 +195,7 @@ def is_full(grid):
             if grid[row][col] == None:
                 return False
     return True 
+
 
 def collide(guess, other_guess):
     ''' returns (guess, other_guess) if there is a collision between two guesses. If not, returns none"'''
@@ -276,36 +258,17 @@ def partition_clue(clue:Clue):
     else:
         return datamuse.get_answers
 
-# def BFS(state_grid, clues):
-#     state_queue = []
-#     solution_list = []
-#     visited_clues = {}
-#     visited_states = {}
+def matrix_score(grid):
+    num_rows = len(grid)
+    num_cols = len(grid[0])
+    
+    total = num_rows * num_cols
 
-#     if verbose:
-#         print()
-#         print("------->     STARTING BFS  ")
-#         print("Current Clues: ")
-#         print_cluelist(clues)
-#         print("Current Visited Clues: " )
-#         print_cluelist(list(visited_clues))
-#     # Revisit this. BFS needs a start trigger but maybe shouldn't be random?
-#     first_clue = random.choice(clues)
-#     state_queue.append(first_clue)
-#     visited_clues.add(first_clue)
+    solved = 0
 
-#     while state_queue:
-#         clue = state_queue.pop()
-#         possible_guesses = generate_guesses(state_grid, clues, visited_clues)
-#         for guess in possible_guesses:
-#             if check_fit(state_grid, guess) == "fit":
-#                 new_child = fit(state_grid, guess)
-#                 print_grid(new_child)
-#                 tuple_v = grid_to_tuple(new_child)
-#                 if (tuple_v not in visited_states):
-#                     visited_clues.add(guess.get_clue())
-#                     visited_states.add(tuple_v)
-#                     state_queue.append()
-#             elif check_fit(state_grid, guess) == "collision":
-#                 new_child = change_rank(state_grid, guess, )
-#     return solution_list
+    for row in range(num_rows):
+        for col in range(num_cols):
+            if grid[row][col] != "[-]" and grid[row][col] != None:
+                 solved += 1
+    
+    return solved/total
