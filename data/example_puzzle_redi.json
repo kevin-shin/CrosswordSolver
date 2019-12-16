@@ -1,0 +1,62 @@
+{
+    "puzzle": {
+        "size": 8,
+        "clues": [
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "mix",
+                    "number": 1,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 0,
+                    "length": 9,
+                    "direction": "A",
+                    "description": "something used to make tea",
+                    "number": 2,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 3,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "coffee and milk",
+                    "number": 3,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 5,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "ice *",
+                    "number": 4,
+                    "num_filled": 0
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 8,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "something used to eat soup",
+                    "number": 5,
+                    "num_filled": 0
+                }
+            }
+        ]
+    }
+}
