@@ -63,11 +63,6 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
     else:
         return google_cache[clue][:limit]
 
-def get_quote_answers(clue:Clue,limit=10,words_only=True):
-    #TODO google quote, use nlp to get answer
-
-    return ["random","words"]
-
 def word_counts(word_list):
     counts = {}
     for word in word_list:
