@@ -3,9 +3,10 @@ from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from printer import print_puzzle, print_grid
 from clue_solutions import guess_set_score
 from printer import print_guess_set
+from statistics import mean
 
 if __name__ == "__main__":
-    example_puzzle = Puzzle.from_file("data/test_puzzle_2.json")
+    example_puzzle = Puzzle.from_file("data/test_puzzle_8.json")
     print_puzzle(example_puzzle)
     solver = Solver(example_puzzle)
     dfs_solution = solver.solve("DFS")
@@ -18,5 +19,6 @@ if __name__ == "__main__":
     print("HERE IS THE SCORE")
     print(guess_set_score(dfs_solution))
     print("PUZZLE COMPLEXITY = ", solver.complexity)
+    example_puzzle.print_stats()
 
 

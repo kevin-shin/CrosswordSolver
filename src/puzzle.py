@@ -1,6 +1,6 @@
 import json
 import os 
-
+from statistics import mean
 from clue import Clue
 
 class Puzzle():
@@ -21,6 +21,16 @@ class Puzzle():
             arr.append((clue, self.clues_map[clue].get_description()))
         # return str(arr)
         return str(self.clues)
+
+    def print_stats(self):
+        print("------------------")
+        print("----STATISTICS----")
+        print("------------------")
+        print()
+        print("Size =", self.size)
+        print("Num Clues =", len(self.clues))
+        print("Mean Solution Length=",mean(c.length for c in self.clues))
+        print("Mean Desc Length=",mean(len(c.description) for c in self.clues))
 
     @staticmethod
     def from_file(filename):
