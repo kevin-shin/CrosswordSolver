@@ -13,16 +13,6 @@ class Puzzle():
     def __str__(self):
         return str(self.clues)
 
-    def print_stats(self):
-        print("------------------")
-        print("----STATISTICS----")
-        print("------------------")
-        print()
-        print("Size =", self.size)
-        print("Num Clues =", len(self.clues))
-        print("Mean Solution Length=",mean(c.length for c in self.clues))
-        print("Mean Desc Length=",mean(len(c.description) for c in self.clues))
-
     @staticmethod
     def from_file(filename):
         pd = PuzzleDecoder()
