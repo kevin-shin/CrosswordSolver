@@ -1,0 +1,127 @@
+{
+    "puzzle": {
+        "size": 5,
+        "clues": [
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 2,
+                    "length": 3,
+                    "direction": "A",
+                    "description": "fish in fish and chips",
+                    "number": 1,
+                    "num_filled": 0,
+                    "solution":"cod"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 3,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "the sooner state",
+                    "number": 2,
+                    "num_filled": 0,
+                    "solution":"okla"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 4,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "per * spending allowance",
+                    "number": 3,
+                    "num_filled": 0,
+                    "solution":"diem"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "yellow-brown fabric used for pants",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution":"khaki"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 1,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "equipment for a gardner or firefighter",
+                    "number": 5,
+                    "num_filled": 0,
+                    "solution":"hose"
+                }
+            },
+            {
+                "clue": {
+                    "row": 2,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "duke or duchess",
+                    "number": 6,
+                    "num_filled": 0,
+                    "solution":"noble"
+                }
+            },
+            {
+                "clue": {
+                    "row": 3,
+                    "column": 0,
+                    "length": 5,
+                    "direction": "A",
+                    "description": "religion with the holy sites of mecca and medina",
+                    "number": 7,
+                    "num_filled": 0,
+                    "solution":"islam"
+                }
+            },
+            {
+                "clue": {
+                    "row": 4,
+                    "column": 0,
+                    "length": 3,
+                    "direction": "A",
+                    "description": "august is the only month that ends with one",
+                    "number": 8,
+                    "num_filled": 0,
+                    "solution":"tee"
+                }
+            },
+            {
+                "clue": {
+                    "row": 0,
+                    "column": 2,
+                    "length": 5,
+                    "direction": "D",
+                    "description": "HBO, TNT, AMC",
+                    "number": 1,
+                    "num_filled": 0,
+                    "solution":"cable"
+                }
+            },
+            {
+                "clue": {
+                    "row": 1,
+                    "column": 0,
+                    "length": 4,
+                    "direction": "D",
+                    "description": "work on a scarf, maybe",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution":"knit"
+                }
+            }
+        ]
+    }
+}

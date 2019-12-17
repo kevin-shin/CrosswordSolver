@@ -1,65 +1,65 @@
 {
     "puzzle": {
-        "size": 9,
+        "size": 6,
         "clues": [
             {
                 "clue": {
-                    "row": 2,
+                    "row": 0,
                     "column": 0,
-                    "length": 4,
-                    "direction": "D",
-                    "description": "mix",
+                    "length": 6,
+                    "direction": "A",
+                    "description": "made more lively",
                     "number": 1,
                     "num_filled": 0,
-                    "solution":"stir"
+                    "solution":"jazzed"
                 }
             },
             {
                 "clue": {
                     "row": 3,
                     "column": 0,
-                    "length": 9,
+                    "length": 6,
                     "direction": "A",
-                    "description": "something used to make tea",
+                    "description": "a way of doing something",
                     "number": 2,
                     "num_filled": 0,
-                    "solution":"tealeaves"
-                }
-            },
-            {
-                "clue": {
-                    "row": 3,
-                    "column": 3,
-                    "length": 5,
-                    "direction": "D",
-                    "description": "coffee and milk",
-                    "number": 3,
-                    "num_filled": 0,
-                    "solution":"latte"
+                    "solution":"method"
                 }
             },
             {
                 "clue": {
                     "row": 0,
-                    "column": 5,
+                    "column": 1,
                     "length": 5,
                     "direction": "D",
-                    "description": "ice * ",
-                    "number": 4,
+                    "description": "a building occupied by monks",
+                    "number": 3,
                     "num_filled": 0,
-                    "solution":"cream"
+                    "solution":"abbey"
                 }
             },
             {
                 "clue": {
-                    "row": 3,
-                    "column": 8,
-                    "length": 5,
+                    "row": 0,
+                    "column": 3,
+                    "length": 6,
                     "direction": "D",
-                    "description": "something used to eat soup",
+                    "description": "a gentle breeze",
+                    "number": 4,
+                    "num_filled": 0,
+                    "solution":"zephyr"
+                }
+            },
+			{
+                "clue": {
+                    "row": 0,
+                    "column": 5,
+                    "length": 6,
+                    "direction": "D",
+                    "description": "a rough sketch",
                     "number": 5,
                     "num_filled": 0,
-                    "solution":"spoon"
+                    "solution":"doodle"
                 }
             }
         ]
