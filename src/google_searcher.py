@@ -59,9 +59,9 @@ def get_blank_answers(clue:Clue,limit=10,words_only=True):
         scores = score_words(words)
         ret = [Guess(clue, word, score) for word, score in scores]
         google_cache[clue] = ret
-        return ret
+        return ret[:limit]
     else:
-        return google_cache[clue]
+        return google_cache[clue][:limit]
 
 def get_quote_answers(clue:Clue,limit=10,words_only=True):
     #TODO google quote, use nlp to get answer
