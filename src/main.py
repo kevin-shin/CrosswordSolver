@@ -1,7 +1,7 @@
 from solver import Solver, matrix_score, make_grid_from_guesses, init_grid
 from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from printer import print_puzzle, print_grid
-from clue_solutions import guess_set_score
+from metrics import guess_set_score, print_puzzle_stats
 from printer import print_guess_set
 from statistics import mean
 

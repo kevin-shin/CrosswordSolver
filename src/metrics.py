@@ -1,3 +1,15 @@
+from statistics import mean
+
+def print_puzle_stats(puzzle):
+    print("------------------")
+    print("----STATISTICS----")
+    print("------------------")
+    print()
+    print("Size =", puzzle.size)
+    print("Num Clues =", len(puzzle.clues))
+    print("Mean Solution Length=",mean(c.length for c in puzzle.clues))
+    print("Mean Desc Length=",mean(len(c.description) for c in puzzle.clues))
+
 def guess_set_score(guess_set):
     num_correct = 0
     num_total = 0
