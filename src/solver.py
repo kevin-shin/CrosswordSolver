@@ -17,7 +17,8 @@ class Solver():
         self.puzzle = puzzle
         self.size = puzzle.size * puzzle.size
         self.grid = init_grid(self.puzzle.clues, self.puzzle.size)
-        self.complexity = grid_score(self.grid)
+        # self.complexity = grid_score(self.grid)
+        self.complexity = get_complexity(puzzle, self.grid)
 
         if printInit:
             print("----------> Starting Grid: INIT GRID")
@@ -166,7 +167,48 @@ def init_grid(clues, size, complexity = False):
                 
     return blank
 
-def grid_score(matrix):
+def get_complexity(puzzle, grid):
+    grid_score = get_grid_score(grid)
+    collision_score = get_collision_squares(grid)
+    print("COMPLEXITY CALLED")
+    print("GRID SCORE: " + str(grid_score))
+    print("COLLISION SCORE: " + str(collision_score))
+    return grid_score * collision_score
+
+
+def get_collision_squares(grid):
+    num_collision = 0
+    num_None = 0
+
+    for row in range(len(grid)):
+        for col in range(len(grid[0])):
+            
+            if grid[row][col] == None:
+                num_None += 1
+                left_neighbor = "[-]"
+                right_neighbor = "[-]"
+                bottom_neighbor = "[-]"
+                top_neighbor = "[-]"
+
+                if row-1 >= 0:
+                    left_neighbor = grid[row-1][col]
+                if row+1 <= len(grid)-1:
+                    right_neighbor = grid[row+1][col]
+                if col-1 >= 0:
+                    top_neighbor = grid[row][col-1]
+                if col+1 <= len(grid)-1:
+                    bottom_neighbor = grid[row][col+1]
+            
+                horizontal_hit = left_neighbor == None or right_neighbor == None
+                vertical_hit = top_neighbor == None or bottom_neighbor == None
+
+                if horizontal_hit and vertical_hit:
+                    num_collision += 1
+
+    return num_collision/num_None
+
+
+def get_grid_score(matrix):
     empty_squares = 0
     blocked_squares = 0
 
@@ -295,7 +337,3 @@ def matrix_score(grid):
                  solved += 1
     
     return solved/total
-
-
-def get_complexity(puzzle):
-    return blank_slots / (puzzle.size ** 2)
