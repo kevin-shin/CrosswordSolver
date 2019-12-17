@@ -1,7 +1,7 @@
 import unittest
-from guess import Guess
-from clue import Clue
-from solver import collide, find_best_guess_set
+from src.guess import Guess
+from src.clue import Clue
+from src.solver import collide, find_best_guess_set
 
 class GuessTest(unittest.TestCase):
 

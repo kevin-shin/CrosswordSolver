@@ -7,19 +7,10 @@ class Puzzle():
     def __init__(self, size, clues):
         self.size = size
         self.clues = clues
-        self.clues_map = {}
-        self.build_adj_list()
 
-    def build_adj_list(self):
-        #TODO: Fix this
-        for clue in self.clues:
-            self.clues_map[clue.get_position()] = clue 
+
 
     def __str__(self):
-        arr = []
-        for clue in self.clues_map.keys():
-            arr.append((clue, self.clues_map[clue].get_description()))
-        # return str(arr)
         return str(self.clues)
 
     def print_stats(self):
