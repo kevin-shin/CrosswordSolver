@@ -7,9 +7,8 @@ import datamuse
 import google_searcher 
 
 printInit = False
-printDFSIteration = True
-printGuessAndGrid = True
-blank_slots = 0
+printDFSIteration = False
+printGuessAndGrid = False
 
 class Solver():
     def __init__(self, puzzle: Puzzle):
@@ -170,11 +169,7 @@ def init_grid(clues, size, complexity = False):
 def get_complexity(puzzle, grid):
     grid_score = get_grid_score(grid)
     collision_score = get_collision_squares(grid)
-    print("COMPLEXITY CALLED")
-    print("GRID SCORE: " + str(grid_score))
-    print("COLLISION SCORE: " + str(collision_score))
     return grid_score * collision_score
-
 
 def get_collision_squares(grid):
     num_collision = 0
@@ -223,7 +218,6 @@ def get_grid_score(matrix):
                 blocked_squares += 1
     
     return empty_squares/(num_cols*num_rows)
-
 
 
 def make_grid_from_guesses(guesses, clues, size):
