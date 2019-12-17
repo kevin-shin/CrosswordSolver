@@ -6,7 +6,8 @@ from clue_solutions import guess_set_score
 from printer import print_guess_set
 from statistics import mean
 
-test_puzzles = ["test_puzzle_1.json", "test_puzzle_2.json", "test_puzzle_3.json", "test_puzzle_4.json", "test_puzzle_5.json", "test_puzzle_6.json", "test_puzzle_7.json", "test_puzzle_8.json", "test_puzzle_9.json"]
+# test_puzzles = ["test_puzzle_1.json", "test_puzzle_2.json", "test_puzzle_3.json", "test_puzzle_4.json", "test_puzzle_5.json", "test_puzzle_6.json", "test_puzzle_7.json", "test_puzzle_8.json", "test_puzzle_9.json"]
+test_puzzles = ["test_puzzle_2.json"]
 
 if __name__ == "__main__":
     for puzzle in test_puzzles:

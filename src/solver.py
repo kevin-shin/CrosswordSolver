@@ -94,10 +94,8 @@ def generate_guesses(clues, visited_clues):
     guesses = []
 
     for clue in not_used_list:
-        #TODO: Use information about the clues to not check for bounds_error but only call permissible clues? 
-        #might be difficult with google. 
         answer_func = partition_clue(clue)
-        clue_guesses = answer_func(clue, 3)
+        clue_guesses = answer_func(clue, 6)
         guesses.extend(clue_guesses)
     return guesses
 

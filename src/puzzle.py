@@ -8,8 +8,6 @@ class Puzzle():
         self.size = size
         self.clues = clues
 
-
-
     def __str__(self):
         return str(self.clues)
 
