@@ -1,7 +1,6 @@
 import requests
 from urllib.parse import urlencode
 from bs4 import BeautifulSoup
-import stanfordnlp
 from clue import Clue
 from guess import Guess
 import re
