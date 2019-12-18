@@ -1,7 +1,14 @@
 from clue import Clue
 
+'''
+    The Guess class is a wrapper for the string that the external API returns. 
+    The Guess object holds a reference to the Clue to which is responds, the string
+    representing the actual answer, and a float representing its score.
+
+'''
+
 class Guess():
-    def __init__(self, clue: Clue, string: str, score: int):
+    def __init__(self, clue: Clue, string: str, score: float):
         self.clue = clue
         self.string = string
         self.score = score
@@ -34,4 +41,4 @@ class Guess():
         return hash(str(self))
 
     def __str__(self):
-        return "GUESS// " + "CLUE: " + str(self. clue) + " GUESS: " + str(self.string)
+        return "GUESS" +  "  |  Guess: " + str(self.string) + "   for Clue: " + str(self. clue)

@@ -7,12 +7,13 @@ sys.path.append(os.getcwd() + '/src/metrics')
 
 from guess import Guess
 from clue import Clue
-from solver import collide, find_best_guess_set, init_grid, check_fit, matrix_score, make_grid_from_guesses
+from solver import collide, find_best_guess_set, init_grid, check_fit, matrix_score, make_grid_from_guesses, get_collision_score, get_grid_score
 from metrics import compare_answers, guess_set_score
 
 class GuessTest(unittest.TestCase):
-
-    ################################## Solver Tests ##############################################
+    ##############################################################################################
+    ####                                  Solver Tests                                         ###
+    ##############################################################################################
 
     def test_collision(self):
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
@@ -26,6 +27,7 @@ class GuessTest(unittest.TestCase):
         self.assertEqual(None,collide(sample_guess, sample_guess_2))
         self.assertEqual(None,collide(sample_guess_3, sample_guess_2))
         self.assertEqual((sample_guess,sample_guess_3),collide(sample_guess, sample_guess_3))
+
 
     def test_find_best_set(self):
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
@@ -43,6 +45,7 @@ class GuessTest(unittest.TestCase):
 
         self.assertEqual(set([sample_guess_2,sample_guess_3]),returned_set)
 
+
     def test_check_fit(self):
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
         sample_clue_2 = Clue(0,3,5,"D","",1,"SPACE")
@@ -57,6 +60,7 @@ class GuessTest(unittest.TestCase):
         self.assertEqual("fit",check_fit(grid,sample_guess))
         self.assertEqual("fit",check_fit(grid,sample_guess_2))
         self.assertEqual("bounds_error",check_fit(grid,sample_guess_3))
+
 
     def test_matrix_score(self):
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
@@ -74,15 +78,28 @@ class GuessTest(unittest.TestCase):
         self.assertEqual(0,matrix_score(grid_empty))
         self.assertEqual(11/25,matrix_score(grid_from_guesses))
 
-    ################################## Metrics Tests ##############################################
+    def test_get_collision_score(self):
+        sample = [  [None,  None, None],
+                    [None, "[-]", "[-]"],
+                    [None, "[-]", "[-]"]]
+
+        self.assertEqual(1/5, get_collision_score(sample))
+
+    def test_get_grid_score(self):
+        sample = [  [None,  None, None],
+                    [None, "[-]", "[-]"],
+                    [None, "[-]", "[-]"]]
+        
+        self.assertEqual(5/9, get_grid_score(sample))
+
+    ##############################################################################################
+    ####                                  Metrics Tests                                        ###
+    ##############################################################################################
 
     def test_compare_answers(self):
-
         self.assertEqual(4,compare_answers("IDEA","IDEA"))
         self.assertEqual(3,compare_answers("IDES","IDEA"))
         self.assertEqual(0,compare_answers("TEST","IDEA"))
-
-
 
 
 if __name__ == "__main__":

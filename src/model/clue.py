@@ -1,7 +1,13 @@
 import json
 
+'''
+    Clue objects represent one clue of the puzzle. They store their position on the grid, length, description, 
+    id_number, and solution. The solution is included as an instance variable only to allow for efficient 
+    scoring calculations, and is not actually used in the IDFS algorithm.
+'''
+
 class Clue:
-    def __init__(self,row:int,column:int,length:int,direction:str,description:str,number:int,solution: str):
+    def __init__(self, row:int, column:int, length:int, direction:str, description:str, number:int, solution: str):
         self.row = row
         self.column = column
         self.length = length

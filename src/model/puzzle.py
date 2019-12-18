@@ -1,3 +1,11 @@
+
+'''
+    The Puzzle class represents the data structure to read in JSON versions of the crossword puzzle
+    and initialize a list of Clue objects for efficient access and computation. Puzzle objects also 
+    hold an instance variable describing their size (width, although this should equal height) for 
+    an easy way to render them to the terminal.
+'''
+
 import json
 import os 
 from statistics import mean
@@ -20,11 +28,13 @@ class Puzzle():
             return pd.decode(lines)
 
 
-# JSON Encoders/Decoders for writing/reading a puzzle to/from a file
-class PuzzleEncoder(json.JSONEncoder):
-    """ Handles writing a puzzle object to a file"""
+#### JSON Encoders/Decoders for writing/reading a puzzle to/from a file
 
-     def default(self, object):
+'''
+    Handles writing a puzzle object to a file.
+'''
+class PuzzleEncoder(json.JSONEncoder):
+    def default(self, object):
         if isinstance(object, Puzzle):
             return {"puzzle":{"size":object.size,"clues":object.clues}}
         elif isinstance(object,Clue):
@@ -32,9 +42,11 @@ class PuzzleEncoder(json.JSONEncoder):
         else:
             return json.JSONEncoder.default(self, object) 
 
-class PuzzleDecoder(json.JSONDecoder):
-    """Handles reading a puzzle object from a file"""
+'''
+    Handles reading a puzzle object from a file.
+'''
 
+class PuzzleDecoder(json.JSONDecoder):
     def __init__(self, *args, **kwargs):
         json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
     def object_hook(self, dct):
