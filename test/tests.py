@@ -24,9 +24,9 @@ class GuessTest(unittest.TestCase):
         sample_guess_2 = Guess(sample_clue_2, "SPACE", 6)
         sample_guess_3 = Guess(sample_clue_3, "IDEA", 5)
 
-        self.assertEquals(None,collide(sample_guess, sample_guess_2))
-        self.assertEquals(None,collide(sample_guess_3, sample_guess_2))
-        self.assertEquals((sample_guess,sample_guess_3),collide(sample_guess, sample_guess_3))
+        self.assertEqual(None,collide(sample_guess, sample_guess_2))
+        self.assertEqual(None,collide(sample_guess_3, sample_guess_2))
+        self.assertEqual((sample_guess,sample_guess_3),collide(sample_guess, sample_guess_3))
 
     def test_find_best_set(self):
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
@@ -42,8 +42,7 @@ class GuessTest(unittest.TestCase):
         guess_set.add(sample_guess_2)
         returned_set = find_best_guess_set(guess_set, sample_guess_3)
 
-        for guess in returned_set:
-            print(guess)
+        self.assertEqual(set([sample_guess_2,sample_guess_3]),returned_set)
 
     def test_check_fit(self):
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
