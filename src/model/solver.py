@@ -1,9 +1,9 @@
 import sys
 import os
 
-sys.path.append(os.getcwd() + '/model')
-sys.path.append(os.getcwd() + '/helper')
-sys.path.append(os.getcwd() + '/searcher')
+sys.path.append(os.getcwd() + '/src/model')
+sys.path.append(os.getcwd() + '/src/helper')
+sys.path.append(os.getcwd() + '/src/searcher')
 
 from clue import Clue
 from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
