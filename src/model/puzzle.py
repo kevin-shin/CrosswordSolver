@@ -22,6 +22,8 @@ class Puzzle():
 
 # JSON Encoders/Decoders for writing/reading a puzzle to/from a file
 class PuzzleEncoder(json.JSONEncoder):
+    """ Handles writing a puzzle object to a file"""
+
      def default(self, object):
         if isinstance(object, Puzzle):
             return {"puzzle":{"size":object.size,"clues":object.clues}}
@@ -31,6 +33,8 @@ class PuzzleEncoder(json.JSONEncoder):
             return json.JSONEncoder.default(self, object) 
 
 class PuzzleDecoder(json.JSONDecoder):
+    """Handles reading a puzzle object from a file"""
+
     def __init__(self, *args, **kwargs):
         json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
     def object_hook(self, dct):
