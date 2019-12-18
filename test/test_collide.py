@@ -15,7 +15,6 @@ class GuessTest(unittest.TestCase):
     ################################## Solver Tests ##############################################
 
     def test_collision(self):
-
         sample_clue = Clue(0,2,4,"D","",0,"KIND")
         sample_clue_2 = Clue(0,3,5,"D","",1,"SPACE")
         sample_clue_3 = Clue(2, 0, 4, "A", "", 2, "IDEA")

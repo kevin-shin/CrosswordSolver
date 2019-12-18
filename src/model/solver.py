@@ -104,7 +104,8 @@ def generate_guesses(clues, visited_clues):
         answer_func = partition_clue(clue)
         clue_guesses = answer_func(clue, 6)
         guesses.extend(clue_guesses)
-    return guesses
+
+    return sorted(guesses, reverse=True)
 
 
 def check_fit(grid, guess):
@@ -152,7 +153,6 @@ def find_best_guess_set(guess_set, current_guess):
         print("FIND BEST GUESS SET IS GOING WRONG")
 
 
-
 def init_grid(clues, size, complexity = False):
     blank = [["[-]" for i in range(size)] for i in range(size)]
 
@@ -171,10 +171,12 @@ def init_grid(clues, size, complexity = False):
                 
     return blank
 
+
 def get_complexity(puzzle, grid):
     grid_score = get_grid_score(grid)
     collision_score = get_collision_squares(grid)
     return grid_score * collision_score
+
 
 def get_collision_squares(grid):
     num_collision = 0

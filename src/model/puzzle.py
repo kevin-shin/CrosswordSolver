@@ -3,6 +3,7 @@ import os
 from statistics import mean
 from clue import Clue
 
+
 class Puzzle():
     def __init__(self, size, clues):
         self.size = size
@@ -18,8 +19,8 @@ class Puzzle():
             lines = f.read()
             return pd.decode(lines)
 
-# JSON Encoders/Decoders for writing/reading a puzzle to/from a file
 
+# JSON Encoders/Decoders for writing/reading a puzzle to/from a file
 class PuzzleEncoder(json.JSONEncoder):
      def default(self, object):
         if isinstance(object, Puzzle):

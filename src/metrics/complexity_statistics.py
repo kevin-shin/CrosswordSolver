@@ -4,7 +4,6 @@ import os
 sys.path.append(os.getcwd() + '/model')
 sys.path.append(os.getcwd() + '/helper')
 
-
 from solver import Solver, matrix_score, make_grid_from_guesses, init_grid
 from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from metrics import guess_set_score
