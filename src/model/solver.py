@@ -1,3 +1,10 @@
+import sys
+import os
+
+sys.path.append(os.getcwd() + '/model')
+sys.path.append(os.getcwd() + '/helper')
+sys.path.append(os.getcwd() + '/searcher')
+
 from clue import Clue
 from puzzle import Puzzle, PuzzleEncoder, PuzzleDecoder
 from datamuse import get_answers

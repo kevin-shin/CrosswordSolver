@@ -1,6 +1,14 @@
+import sys
+import os
+
+sys.path.append(os.getcwd() + '/model')
+
+from guess import Guess
+from clue import Clue
+from solver import collide, find_best_guess_set
 from statistics import mean
 
-def print_puzle_stats(puzzle):
+def print_puzzle_stats(puzzle):
     print("------------------")
     print("----STATISTICS----")
     print("------------------")

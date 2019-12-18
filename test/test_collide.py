@@ -1,7 +1,13 @@
 import unittest
-from src.guess import Guess
-from src.clue import Clue
-from src.solver import collide, find_best_guess_set
+import sys
+import os
+
+sys.path.append(os.getcwd() + '/src')
+
+from guess import Guess
+from clue import Clue
+from solver import collide, find_best_guess_set
+
 
 class GuessTest(unittest.TestCase):
 
@@ -14,9 +20,9 @@ class GuessTest(unittest.TestCase):
     #     print(collide(sample_guess, sample_guess_3))
 
     def test_find_best_set(self):
-        sample_clue = Clue(0,2,4,"D","",0)
-        sample_clue_2 = Clue(0,3,5,"D","",1)
-        sample_clue_3 = Clue(2, 0, 4, "A", "", 2)
+        sample_clue = Clue(0,2,4,"D","",0,"KIND")
+        sample_clue_2 = Clue(0,3,5,"D","",1,"SPACE")
+        sample_clue_3 = Clue(2, 0, 4, "A", "", 2, "IDEA")
 
         sample_guess = Guess(sample_clue, "KIND", 4)
         sample_guess_2 = Guess(sample_clue_2, "SPACE", 6)
